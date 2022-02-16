@@ -19,10 +19,8 @@
  * Authors:
  * - lambdaprime <intid@protonmail.com>
  */
-package id.jrosmessages.impl;
+package id.jrosmessages;
 
-import id.jrosmessages.Message;
-import id.jrosmessages.MessageMetadata;
 import id.xfunction.lang.XRE;
 import java.util.Optional;
 

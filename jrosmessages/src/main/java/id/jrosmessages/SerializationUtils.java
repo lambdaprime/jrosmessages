@@ -19,9 +19,10 @@
  * Authors:
  * - lambdaprime <intid@protonmail.com>
  */
-package id.jrosmessages.impl;
+package id.jrosmessages;
 
-import id.jrosmessages.Message;
+import id.jrosmessages.impl.RosDataInput;
+import id.jrosmessages.impl.RosDataOutput;
 import id.kineticstreamer.KineticStreamReader;
 import id.kineticstreamer.KineticStreamWriter;
 import java.io.ByteArrayInputStream;
@@ -32,7 +33,7 @@ import java.io.DataOutputStream;
 /**
  * Performs message (de)serialization (from)to stream of bytes.
  */
-public class MessageTransformer {
+public class SerializationUtils {
 
     /**
      * Deserialize message from byte stream
@@ -41,7 +42,7 @@ public class MessageTransformer {
      * @param data  byte array with the message
      * @param clazz message class
      */
-    public <M extends Message> M transform(byte[] data, Class<M> clazz) {
+    public <M extends Message> M read(byte[] data, Class<M> clazz) {
         try {
             var dis = new DataInputStream(new ByteArrayInputStream(data));
             var ks = new KineticStreamReader(new RosDataInput(dis));
@@ -57,7 +58,7 @@ public class MessageTransformer {
      * 
      * @param message message to serialize
      */
-    public byte[] transform(Message message) {
+    public byte[] write(Message message) {
         try {
             var bos = new ByteArrayOutputStream();
             var dos = new DataOutputStream(bos);
