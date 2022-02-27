@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 apply plugin : 'eclipse'
@@ -18,4 +19,32 @@ targetCompatibility = '11'
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport, jacocoTestCoverageVerification
+}
+
+jacocoTestReport {
+    // generate only HTML report
+    reports {
+        xml.enabled = false
+        csv.enabled = false
+        html.enabled = true
+    }
+    sourceDirectories.from = project(':jrosmessages').sourceSets.main.java.srcDirs
+    classDirectories.from = project(':jrosmessages').sourceSets.main.java.classesDirectory
+}
+
+jacocoTestCoverageVerification {
+    sourceDirectories.from = project(':jrosmessages').sourceSets.main.java.srcDirs
+    classDirectories.from = project(':jrosmessages').sourceSets.main.java.classesDirectory
+    violationRules {
+        rule {
+        enabled = true
+            element = 'PACKAGE'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.0
+            }
+        }
+    }
 }
