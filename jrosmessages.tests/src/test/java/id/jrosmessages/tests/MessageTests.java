@@ -19,6 +19,7 @@ package id.jrosmessages.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import id.jrosmessages.MessageFormat;
 import id.jrosmessages.geometry_msgs.Point32Message;
 import id.jrosmessages.geometry_msgs.PointMessage;
 import id.jrosmessages.geometry_msgs.PolygonMessage;
@@ -58,6 +59,14 @@ public class MessageTests {
                 List.of(
                         resourceUtils.readResource(MessageTests.class, "string-empty"),
                         new StringMessage()),
+                List.of(
+                        resourceUtils.readResource(MessageTests.class, "string-ros2"),
+                        new StringMessage("Hello World: 2767"),
+                        MessageFormat.ROS2),
+                List.of(
+                        resourceUtils.readResource(MessageTests.class, "string-empty-ros2"),
+                        new StringMessage(),
+                        MessageFormat.ROS2),
                 List.of(
                         resourceUtils.readResource(MessageTests.class, "string"),
                         new StringMessage().withData("hello there")),
@@ -206,6 +215,8 @@ public class MessageTests {
     public void testRead(List testData) throws Exception {
         var collector = new XInputStream((String) testData.get(0));
         var dis = new RosDataInput(new DataInputStream(collector));
+        if (testData.size() == 3)
+            dis = new RosDataInput(new DataInputStream(collector), (MessageFormat) testData.get(2));
         var ks = new KineticStreamReader(dis);
         Object expected = testData.get(1);
         Object actual = ks.read(expected.getClass());
@@ -219,6 +230,10 @@ public class MessageTests {
         var b = testData.get(1);
         var collector = new XOutputStream();
         var dos = new RosDataOutput(new DataOutputStream(collector));
+        if (testData.size() == 3)
+            dos =
+                    new RosDataOutput(
+                            new DataOutputStream(collector), (MessageFormat) testData.get(2));
         var ks = new KineticStreamWriter(dos);
         ks.write(b);
         assertEquals(testData.get(0), collector.asHexString());

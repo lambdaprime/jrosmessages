@@ -17,6 +17,7 @@
  */
 package id.jrosmessages.impl;
 
+import id.jrosmessages.MessageFormat;
 import id.kineticstreamer.InputKineticStream;
 import id.kineticstreamer.KineticStreamReader;
 import id.xfunction.logging.XLogger;
@@ -29,9 +30,15 @@ public class RosDataInput implements InputKineticStream {
     private static final XLogger LOGGER = XLogger.getLogger(RosDataInput.class);
 
     private DataInput in;
+    private MessageFormat messageFormat;
 
     public RosDataInput(DataInput in) {
+        this(in, MessageFormat.ROS1);
+    }
+
+    public RosDataInput(DataInput in, MessageFormat messageFormat) {
         this.in = in;
+        this.messageFormat = messageFormat;
     }
 
     @Override
@@ -45,7 +52,12 @@ public class RosDataInput implements InputKineticStream {
         int len = readLen();
         byte[] b = new byte[len];
         in.readFully(b);
-        var value = new String(b);
+        if (messageFormat == MessageFormat.ROS2) {
+            // if string ended with null byte we ignore it.
+            // This is mainly for ROS2 strings.
+            if (b.length > 0 && b[b.length - 1] == 0) len--;
+        }
+        var value = new String(b, 0, len);
         LOGGER.exiting("readString", value);
         return value;
     }

@@ -17,6 +17,7 @@
  */
 package id.jrosmessages.impl;
 
+import id.jrosmessages.MessageFormat;
 import id.kineticstreamer.KineticStreamWriter;
 import id.kineticstreamer.OutputKineticStream;
 import java.io.DataOutput;
@@ -25,9 +26,15 @@ import java.io.IOException;
 public class RosDataOutput implements OutputKineticStream {
 
     private DataOutput out;
+    private MessageFormat messageFormat;
 
     public RosDataOutput(DataOutput out) {
+        this(out, MessageFormat.ROS1);
+    }
+
+    public RosDataOutput(DataOutput out, MessageFormat messageFormat) {
         this.out = out;
+        this.messageFormat = messageFormat;
     }
 
     public void writeLen(int len) throws IOException {
@@ -36,8 +43,11 @@ public class RosDataOutput implements OutputKineticStream {
 
     @Override
     public void writeString(String str) throws IOException {
-        writeLen(str.length());
+        var len = str.length();
+        if (messageFormat == MessageFormat.ROS2 && !str.isEmpty()) len++;
+        writeLen(len);
         out.write(str.getBytes());
+        if (messageFormat == MessageFormat.ROS2 && len != 0) out.write(0);
     }
 
     @Override
