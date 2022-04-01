@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.visualization_msgs;
 
 import id.jrosmessages.Message;
@@ -27,16 +23,13 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 
-/**
- * Definition for visualization_msgs/MarkerArray
- */
+/** Definition for visualization_msgs/MarkerArray */
 @MessageMetadata(type = MarkerArrayMessage.NAME, md5sum = "d155b9ce5188fbaf89745847fd5882d7")
 public class MarkerArrayMessage implements Message {
 
     static final String NAME = "visualization_msgs/MarkerArray";
 
-    @Streamed
-    public MarkerMessage[] markers = new MarkerMessage[0];
+    @Streamed public MarkerMessage[] markers = new MarkerMessage[0];
 
     public MarkerArrayMessage withMarkers(MarkerMessage... markers) {
         this.markers = markers;
@@ -45,8 +38,7 @@ public class MarkerArrayMessage implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString(
-                "markers", Arrays.toString(markers));
+        return XJson.asString("markers", Arrays.toString(markers));
     }
 
     @Override

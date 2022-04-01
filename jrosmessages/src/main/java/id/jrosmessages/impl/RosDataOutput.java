@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -14,10 +14,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
  */
 package id.jrosmessages.impl;
 
@@ -51,16 +47,12 @@ public class RosDataOutput implements OutputKineticStream {
 
     @Override
     public void writeDouble(Double f) throws IOException {
-        out.writeDouble(Double.longBitsToDouble(
-                Long.reverseBytes(
-                        Double.doubleToRawLongBits(f))));
+        out.writeDouble(Double.longBitsToDouble(Long.reverseBytes(Double.doubleToRawLongBits(f))));
     }
 
     @Override
     public void writeFloat(Float f) throws IOException {
-        out.writeFloat(Float.intBitsToFloat(
-                Integer.reverseBytes(
-                        Float.floatToRawIntBits(f))));
+        out.writeFloat(Float.intBitsToFloat(Integer.reverseBytes(Float.floatToRawIntBits(f))));
     }
 
     @Override

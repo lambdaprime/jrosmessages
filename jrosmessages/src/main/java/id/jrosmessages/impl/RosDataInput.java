@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -14,10 +14,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
  */
 package id.jrosmessages.impl;
 
@@ -61,9 +57,9 @@ public class RosDataInput implements InputKineticStream {
     @Override
     public double readDouble() throws IOException {
         LOGGER.entering("readDouble");
-        var value = Double.longBitsToDouble(
-                Long.reverseBytes(
-                        Double.doubleToRawLongBits(in.readDouble())));
+        var value =
+                Double.longBitsToDouble(
+                        Long.reverseBytes(Double.doubleToRawLongBits(in.readDouble())));
         LOGGER.exiting("readDouble", value);
         return value;
     }
@@ -71,9 +67,8 @@ public class RosDataInput implements InputKineticStream {
     @Override
     public float readFloat() throws IOException {
         LOGGER.entering("readFloat");
-        var value = Float.intBitsToFloat(
-                Integer.reverseBytes(
-                        Float.floatToRawIntBits(in.readFloat())));
+        var value =
+                Float.intBitsToFloat(Integer.reverseBytes(Float.floatToRawIntBits(in.readFloat())));
         LOGGER.exiting("readFloat", value);
         return value;
     }

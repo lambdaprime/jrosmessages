@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
@@ -28,16 +24,13 @@ import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
 
-/**
- * Definition for geometry_msgs/Polygon
- */
+/** Definition for geometry_msgs/Polygon */
 @MessageMetadata(type = PolygonMessage.NAME, md5sum = "cd60a26494a087f577976f0329fa120e")
 public class PolygonMessage implements Message {
 
     static final String NAME = "geometry_msgs/Polygon";
 
-    @Streamed
-    public Point32Message[] points = new Point32Message[0];
+    @Streamed public Point32Message[] points = new Point32Message[0];
 
     public PolygonMessage withPoints(Point32Message[] points) {
         this.points = points;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
@@ -27,19 +23,15 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for geometry_msgs/Pose
- */
+/** Definition for geometry_msgs/Pose */
 @MessageMetadata(type = PoseMessage.NAME, md5sum = "e45d45a5a1ce597b249e23fb30fc871f")
 public class PoseMessage implements Message {
 
     static final String NAME = "geometry_msgs/Pose";
 
-    @Streamed
-    public PointMessage position = new PointMessage();
+    @Streamed public PointMessage position = new PointMessage();
 
-    @Streamed
-    public QuaternionMessage orientation = new QuaternionMessage();
+    @Streamed public QuaternionMessage orientation = new QuaternionMessage();
 
     public PoseMessage withPosition(PointMessage position) {
         this.position = position;
@@ -53,8 +45,7 @@ public class PoseMessage implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("position", position,
-                "orientation", orientation);
+        return XJson.asString("position", position, "orientation", orientation);
     }
 
     @Override

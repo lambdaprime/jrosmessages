@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.std_msgs;
 
 import id.jrosmessages.Message;
@@ -27,9 +23,7 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for std_msgs/ColorRGBA
- */
+/** Definition for std_msgs/ColorRGBA */
 @MessageMetadata(type = ColorRGBAMessage.NAME, md5sum = "a29a96539573343b1310c73607334b00")
 public class ColorRGBAMessage implements Message {
 
@@ -37,8 +31,7 @@ public class ColorRGBAMessage implements Message {
 
     public static final ColorRGBAMessage RED = new ColorRGBAMessage(0.F, 1.F, 0.F, 1.F);
 
-    @Streamed
-    public float r, g, b, a;
+    @Streamed public float r, g, b, a;
 
     public ColorRGBAMessage() {
         // TODO Auto-generated constructor stub
@@ -73,10 +66,7 @@ public class ColorRGBAMessage implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("r", r,
-                "g", g,
-                "b", b,
-                "a", a).toString();
+        return XJson.asString("r", r, "g", g, "b", b, "a", a).toString();
     }
 
     @Override

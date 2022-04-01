@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.std_msgs;
 
 import id.jrosmessages.Message;
@@ -27,19 +23,14 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for std_msgs/String
- */
+/** Definition for std_msgs/String */
 @MessageMetadata(type = "std_msgs/String", md5sum = "992ce8a1687cec8c8bd883ec73ca41d1")
 public class StringMessage implements Message {
 
-    @Streamed
-    public String data = "";
+    @Streamed public String data = "";
 
     // for kineticstreamer
-    public StringMessage() {
-
-    }
+    public StringMessage() {}
 
     public StringMessage(String data) {
         this.data = data;

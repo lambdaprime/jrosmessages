@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,18 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages;
 
 import id.xfunction.lang.XRE;
 import java.util.Optional;
 
-/**
- * Allows to access message metadata based on their class object.
- */
+/** Allows to access message metadata based on their class object. */
 public class MetadataAccessor {
 
     public String getMd5(Class<? extends Message> messageClass) {
@@ -40,5 +34,4 @@ public class MetadataAccessor {
                 .map(MessageMetadata::type)
                 .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
     }
-
 }

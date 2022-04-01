@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.primitives;
 
 import id.kineticstreamer.annotations.Streamed;
@@ -28,21 +24,13 @@ public class Duration {
 
     public static final Duration UNLIMITED = new Duration();
 
-    /**
-     * Seconds (stamp_secs) since epoch
-     */
-    @Streamed
-    public int sec;
+    /** Seconds (stamp_secs) since epoch */
+    @Streamed public int sec;
 
-    /**
-     * Nanoseconds since this.sec
-     */
-    @Streamed
-    public int nsec;
+    /** Nanoseconds since this.sec */
+    @Streamed public int nsec;
 
-    public Duration() {
-
-    }
+    public Duration() {}
 
     public Duration(int sec) {
         this(sec, 0);
@@ -55,8 +43,7 @@ public class Duration {
 
     @Override
     public String toString() {
-        return XJson.asString("sec", sec,
-                "nsec", nsec).toString();
+        return XJson.asString("sec", sec, "nsec", nsec).toString();
     }
 
     @Override
@@ -67,8 +54,6 @@ public class Duration {
     @Override
     public boolean equals(Object obj) {
         Duration other = (Duration) obj;
-        return sec == other.sec
-                && nsec == other.nsec;
+        return sec == other.sec && nsec == other.nsec;
     }
-
 }

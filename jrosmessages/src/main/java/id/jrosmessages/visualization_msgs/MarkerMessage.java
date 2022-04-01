@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -14,10 +14,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
  */
 package id.jrosmessages.visualization_msgs;
 
@@ -35,9 +31,7 @@ import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
 
-/**
- * Definition for visualization_msgs/Marker
- */
+/** Definition for visualization_msgs/Marker */
 @MessageMetadata(type = MarkerMessage.NAME, md5sum = "4048c9de2a16f4ae8e0538085ebf1b97")
 public class MarkerMessage implements Message {
 
@@ -65,104 +59,59 @@ public class MarkerMessage implements Message {
         DELETEALL,
     }
 
-    /**
-     * Header for time/frame information
-     */
-    @Streamed
-    public HeaderMessage header = new HeaderMessage();
+    /** Header for time/frame information */
+    @Streamed public HeaderMessage header = new HeaderMessage();
 
     /**
-     * Namespace to place this object in... used in conjunction with id to create a
-     * unique name for the object
+     * Namespace to place this object in... used in conjunction with id to create a unique name for
+     * the object
      */
-    @Streamed
-    public StringMessage ns = new StringMessage();
+    @Streamed public StringMessage ns = new StringMessage();
 
     /**
-     * Object ID useful in conjunction with the namespace for manipulating and
-     * deleting the object later
+     * Object ID useful in conjunction with the namespace for manipulating and deleting the object
+     * later
      */
-    @Streamed
-    public int id;
+    @Streamed public int id;
+
+    /** Type of object */
+    @Streamed public int type;
+
+    /** 0 add/modify an object, 1 (deprecated), 2 deletes an object, 3 deletes all objects */
+    @Streamed public int action;
+
+    /** Pose of the object */
+    @Streamed public PoseMessage pose = new PoseMessage();
+
+    /** Scale of the object 1,1,1 means default (usually 1 meter square) */
+    @Streamed public Vector3Message scale = new Vector3Message();
+
+    /** Color [0.0-1.0] */
+    @Streamed public ColorRGBAMessage color = new ColorRGBAMessage();
+
+    /** How long the object should last before being automatically deleted. 0 means forever */
+    @Streamed public Duration lifetime = new Duration();
+
+    /** If this marker should be frame-locked, i.e. retransformed into its frame every timestep */
+    @Streamed public boolean frame_locked;
+
+    /** Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, ...) */
+    @Streamed public PointMessage[] points = new PointMessage[0];
 
     /**
-     * Type of object
+     * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, ...) number of
+     * colors must either be 0 or equal to the number of points NOTE: alpha is not yet used
      */
-    @Streamed
-    public int type;
+    @Streamed public ColorRGBAMessage[] colors = new ColorRGBAMessage[0];
 
-    /**
-     * 0 add/modify an object, 1 (deprecated), 2 deletes an object, 3 deletes all
-     * objects
-     */
-    @Streamed
-    public int action;
+    /** Only used for text markers */
+    @Streamed public StringMessage text = new StringMessage();
 
-    /**
-     * Pose of the object
-     */
-    @Streamed
-    public PoseMessage pose = new PoseMessage();
+    /** Only used for MESH_RESOURCE markers */
+    @Streamed public StringMessage mesh_resource = new StringMessage();
 
-    /**
-     * Scale of the object 1,1,1 means default (usually 1 meter square)
-     */
-    @Streamed
-    public Vector3Message scale = new Vector3Message();
-
-    /**
-     * Color [0.0-1.0]
-     */
-    @Streamed
-    public ColorRGBAMessage color = new ColorRGBAMessage();
-
-    /**
-     * How long the object should last before being automatically deleted. 0 means
-     * forever
-     */
-    @Streamed
-    public Duration lifetime = new Duration();
-
-    /**
-     * If this marker should be frame-locked, i.e. retransformed into its frame
-     * every timestep
-     */
-    @Streamed
-    public boolean frame_locked;
-
-    /**
-     * Only used if the type specified has some use for them (eg. POINTS,
-     * LINE_STRIP, ...)
-     */
-    @Streamed
-    public PointMessage[] points = new PointMessage[0];
-
-    /**
-     * Only used if the type specified has some use for them (eg. POINTS,
-     * LINE_STRIP, ...) number of colors must either be 0 or equal to the number of
-     * points NOTE: alpha is not yet used
-     */
-    @Streamed
-    public ColorRGBAMessage[] colors = new ColorRGBAMessage[0];
-
-    /**
-     * Only used for text markers
-     */
-    @Streamed
-    public StringMessage text = new StringMessage();
-
-    /**
-     * Only used for MESH_RESOURCE markers
-     */
-    @Streamed
-    public StringMessage mesh_resource = new StringMessage();
-
-    /**
-     * If this marker should be frame-locked, i.e. retransformed into its frame
-     * every timestep
-     */
-    @Streamed
-    public boolean mesh_use_embedded_materials;
+    /** If this marker should be frame-locked, i.e. retransformed into its frame every timestep */
+    @Streamed public boolean mesh_use_embedded_materials;
 
     public MarkerMessage withHeader(HeaderMessage header) {
         this.header = header;
@@ -241,7 +190,8 @@ public class MarkerMessage implements Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(header,
+        return Objects.hash(
+                header,
                 ns,
                 id,
                 type,

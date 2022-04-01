@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
@@ -27,19 +23,15 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for geometry_msgs/Vector3
- */
+/** Definition for geometry_msgs/Vector3 */
 @MessageMetadata(type = Vector3Message.NAME, md5sum = "4a842b65f413084dc2b10fb484ea7f17")
 public class Vector3Message implements Message {
 
     static final String NAME = "geometry_msgs/Vector3";
 
-    @Streamed
-    public double x, y, z;
+    @Streamed public double x, y, z;
 
-    public Vector3Message() {
-    }
+    public Vector3Message() {}
 
     public Vector3Message(double x, double y, double z) {
         this.x = x;
@@ -64,9 +56,7 @@ public class Vector3Message implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("x", x,
-                "y", y,
-                "z", z);
+        return XJson.asString("x", x, "y", y, "z", z);
     }
 
     @Override

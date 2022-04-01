@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
@@ -28,19 +24,15 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for geometry_msgs/PolygonStamped
- */
+/** Definition for geometry_msgs/PolygonStamped */
 @MessageMetadata(type = PolygonStampedMessage.NAME, md5sum = "c6be8f7dc3bee7fe9e8d296070f53340")
 public class PolygonStampedMessage implements Message {
 
     static final String NAME = "geometry_msgs/PolygonStamped";
 
-    @Streamed
-    public HeaderMessage header = new HeaderMessage();
+    @Streamed public HeaderMessage header = new HeaderMessage();
 
-    @Streamed
-    public PolygonMessage polygon = new PolygonMessage();
+    @Streamed public PolygonMessage polygon = new PolygonMessage();
 
     public PolygonStampedMessage withPolygon(PolygonMessage polygon) {
         this.polygon = polygon;
@@ -54,8 +46,7 @@ public class PolygonStampedMessage implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("header", header,
-                "polygon", polygon);
+        return XJson.asString("header", header, "polygon", polygon);
     }
 
     @Override
@@ -66,7 +57,6 @@ public class PolygonStampedMessage implements Message {
     @Override
     public boolean equals(Object obj) {
         PolygonStampedMessage other = (PolygonStampedMessage) obj;
-        return Objects.equals(header, other.header) &&
-                Objects.equals(polygon, other.polygon);
+        return Objects.equals(header, other.header) && Objects.equals(polygon, other.polygon);
     }
 }

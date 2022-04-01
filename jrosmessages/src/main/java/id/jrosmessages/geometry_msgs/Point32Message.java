@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
@@ -27,19 +23,15 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for geometry_msgs/Point32
- */
+/** Definition for geometry_msgs/Point32 */
 @MessageMetadata(type = Point32Message.NAME, md5sum = "cc153912f1453b708d221682bc23d9ac")
 public class Point32Message implements Message {
 
     static final String NAME = "geometry_msgs/Point32";
 
-    @Streamed
-    public float x, y, z;
+    @Streamed public float x, y, z;
 
-    public Point32Message() {
-    }
+    public Point32Message() {}
 
     public Point32Message(float x, float y, float z) {
         this.x = x;
@@ -64,9 +56,7 @@ public class Point32Message implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("x", x,
-                "y", y,
-                "z", z);
+        return XJson.asString("x", x, "y", y, "z", z);
     }
 
     @Override

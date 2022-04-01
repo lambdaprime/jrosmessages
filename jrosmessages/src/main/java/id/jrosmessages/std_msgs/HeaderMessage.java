@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.std_msgs;
 
 import id.jrosmessages.Message;
@@ -28,20 +24,15 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for std_msgs/Header
- */
+/** Definition for std_msgs/Header */
 @MessageMetadata(type = "std_msgs/Header", md5sum = "2176decaecbce78abc3b96ef049fabed")
 public class HeaderMessage implements Message {
 
-    @Streamed
-    public int seq;
+    @Streamed public int seq;
 
-    @Streamed
-    public Time stamp = new Time();
+    @Streamed public Time stamp = new Time();
 
-    @Streamed
-    public String frame_id = "";
+    @Streamed public String frame_id = "";
 
     public HeaderMessage withSeq(int seq) {
         this.seq = seq;
@@ -60,9 +51,7 @@ public class HeaderMessage implements Message {
 
     @Override
     public String toString() {
-        return XJson.asString("seq", "" + seq,
-                "stamp", stamp,
-                "frame_id", frame_id).toString();
+        return XJson.asString("seq", "" + seq, "stamp", stamp, "frame_id", frame_id).toString();
     }
 
     @Override

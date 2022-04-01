@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages;
 
 import id.jrosmessages.geometry_msgs.PointMessage;
@@ -27,9 +23,8 @@ import id.jrosmessages.geometry_msgs.TransformMessage;
 
 /**
  * Message objects transformers.
- * 
- * <p>
- * For performance reasons they avoid copying data and copy references instead.
+ *
+ * <p>For performance reasons they avoid copying data and copy references instead.
  */
 public class MessagesTransformer {
 

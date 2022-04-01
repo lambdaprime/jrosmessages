@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.primitives;
 
 import id.kineticstreamer.annotations.Streamed;
@@ -27,21 +23,13 @@ import java.time.Instant;
 
 public class Time {
 
-    /**
-     * Seconds (stamp_secs) since epoch (unsigned)
-     */
-    @Streamed
-    public int sec;
+    /** Seconds (stamp_secs) since epoch (unsigned) */
+    @Streamed public int sec;
 
-    /**
-     * Nanoseconds since this.sec (unsigned)
-     */
-    @Streamed
-    public int nsec;
+    /** Nanoseconds since this.sec (unsigned) */
+    @Streamed public int nsec;
 
-    public Time() {
-
-    }
+    public Time() {}
 
     public Time(int sec, int nsec) {
         this.sec = sec;
@@ -50,8 +38,12 @@ public class Time {
 
     @Override
     public String toString() {
-        return XJson.asString("sec", Integer.toUnsignedString(sec),
-                "nsec", Integer.toUnsignedString(nsec)).toString();
+        return XJson.asString(
+                        "sec",
+                        Integer.toUnsignedString(sec),
+                        "nsec",
+                        Integer.toUnsignedString(nsec))
+                .toString();
     }
 
     @Override
@@ -62,8 +54,7 @@ public class Time {
     @Override
     public boolean equals(Object obj) {
         Time other = (Time) obj;
-        return sec == other.sec
-                && nsec == other.nsec;
+        return sec == other.sec && nsec == other.nsec;
     }
 
     public static Time now() {

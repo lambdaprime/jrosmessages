@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 jrosmessages project
+ * Copyright 2022 jrosclient project
  * 
  * Website: https://github.com/lambdaprime/jrosmessages
  * 
@@ -15,10 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 package id.jrosmessages.sensor_msgs;
 
 import id.jrosmessages.Message;
@@ -27,18 +23,13 @@ import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
-/**
- * Definition for sensor_msgs/PointField
- */
+/** Definition for sensor_msgs/PointField */
 @MessageMetadata(type = PointFieldMessage.NAME, md5sum = "268eacb2962780ceac86cbd17e328150")
 public class PointFieldMessage implements Message {
 
     static final String NAME = "sensor_msgs/PointField";
 
-    /**
-     * This message holds the description of one point entry in the PointCloud2
-     * message format.
-     */
+    /** This message holds the description of one point entry in the PointCloud2 message format. */
     public enum DataType {
         INT8,
         UINT8,
@@ -52,35 +43,22 @@ public class PointFieldMessage implements Message {
 
     /**
      * Name of field: x, y, z, rgb, rgba, etc.
-     * 
-     * @see <a href=
-     *      "http://docs.ros.org/hydro/api/pcl/html/point__types_8hpp.html">Point
-     *      type names</a>
+     *
+     * @see <a href= "http://docs.ros.org/hydro/api/pcl/html/point__types_8hpp.html">Point type
+     *     names</a>
      */
-    @Streamed
-    public String name;
+    @Streamed public String name;
 
-    /**
-     * Offset from start of point struct
-     */
-    @Streamed
-    public int offset;
+    /** Offset from start of point struct */
+    @Streamed public int offset;
 
-    /**
-     * Data type
-     */
-    @Streamed
-    public byte datatype;
+    /** Data type */
+    @Streamed public byte datatype;
 
-    /**
-     * How many elements in the field
-     */
-    @Streamed
-    public int count;
+    /** How many elements in the field */
+    @Streamed public int count;
 
-    public PointFieldMessage() {
-
-    }
+    public PointFieldMessage() {}
 
     public PointFieldMessage withName(String name) {
         this.name = name;
@@ -113,10 +91,7 @@ public class PointFieldMessage implements Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name,
-                offset,
-                count,
-                datatype);
+        return Objects.hash(name, offset, count, datatype);
     }
 
     @Override
