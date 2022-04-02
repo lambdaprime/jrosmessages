@@ -40,11 +40,11 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
         enabled = true
-            element = 'PACKAGE'
+            element = 'BUNDLE'
             limit {
                 counter = 'LINE'
                 value = 'COVEREDRATIO'
-                minimum = 0.0
+                minimum = 0.3
             }
         }
     }

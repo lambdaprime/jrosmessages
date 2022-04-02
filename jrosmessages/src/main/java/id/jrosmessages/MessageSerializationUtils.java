@@ -29,6 +29,16 @@ import java.io.DataOutputStream;
 /** Performs message (de)serialization (from)to stream of bytes. */
 public class MessageSerializationUtils {
 
+    private MessageFormat messageFormat;
+
+    public MessageSerializationUtils() {
+        this(MessageFormat.ROS1);
+    }
+
+    public MessageSerializationUtils(MessageFormat messageFormat) {
+        this.messageFormat = messageFormat;
+    }
+
     /**
      * Deserialize message from byte stream
      *
@@ -39,7 +49,7 @@ public class MessageSerializationUtils {
     public <M extends Message> M read(byte[] data, Class<M> clazz) {
         try {
             var dis = new DataInputStream(new ByteArrayInputStream(data));
-            var ks = new KineticStreamReader(new RosDataInput(dis));
+            var ks = new KineticStreamReader(new RosDataInput(dis, messageFormat));
             Object obj = ks.read(clazz);
             return (M) obj;
         } catch (Exception e) {
@@ -56,7 +66,7 @@ public class MessageSerializationUtils {
         try {
             var bos = new ByteArrayOutputStream();
             var dos = new DataOutputStream(bos);
-            var ks = new KineticStreamWriter(new RosDataOutput(dos));
+            var ks = new KineticStreamWriter(new RosDataOutput(dos, messageFormat));
             ks.write(message);
             return bos.toByteArray();
         } catch (Exception e) {
