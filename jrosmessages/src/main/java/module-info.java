@@ -41,12 +41,10 @@ module jrosmessages {
     exports id.jrosmessages.primitives;
     exports id.jrosmessages.std_msgs;
     exports id.jrosmessages.geometry_msgs;
-    exports id.jrosmessages.visualization_msgs;
     exports id.jrosmessages.sensor_msgs;
     exports id.jrosmessages.trajectory_msgs;
     exports id.jrosmessages.shape_msgs;
     exports id.jrosmessages.object_recognition_msgs;
-    exports id.jrosmessages.octomap_msgs;
     exports id.jrosmessages.impl to
             jrosmessages.tests;
 }
