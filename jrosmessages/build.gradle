@@ -22,9 +22,6 @@ dependencies {
     apiElements 'io.github.lambdaprime:kineticstreamer:3.0'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
-
 jar {
     manifest { 
         attributes 'Implementation-Version': "${rootProject.version}"
