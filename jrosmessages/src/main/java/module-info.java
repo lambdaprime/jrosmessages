@@ -15,9 +15,6 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-/*
- * Authors: - lambdaprime <intid@protonmail.com>
- */
 /**
  * Java module with ROS (Robot Operating System) message definitions. These message definitions are
  * currently used in <a href="https://github.com/lambdaprime/jrosclient">jrosclient</a> but they are
@@ -30,7 +27,8 @@
  *     messages</a>
  * @see <a href= "https://github.com/lambdaprime/jrosmessages/releases">Download</a>
  * @see <a href="https://github.com/lambdaprime/jrosmessages">GitHub repository</a>
- * @see <a href= "http://portal2.atwebpages.com/jrosclient/">jrosclient documentation</a>
+ * @see <a href= "http://portal2.atwebpages.com/jrosclient/">jrosclient documentation</a> * @author
+ *     lambdaprime intid@protonmail.com
  */
 module jrosmessages {
     requires id.xfunction;
@@ -45,6 +43,4 @@ module jrosmessages {
     exports id.jrosmessages.trajectory_msgs;
     exports id.jrosmessages.shape_msgs;
     exports id.jrosmessages.object_recognition_msgs;
-    exports id.jrosmessages.impl to
-            jrosmessages.tests;
 }

@@ -1,8 +1,8 @@
-**jrosmessages** - Java module with ROS (Robot Operating System) message definitions.
+**jrosmessages** - Java module with ROS (Robot Operating System) message definitions which are common across different ROS versions (ROS1, ROS2, ...).
 
 # Requirements
 
-Java 11+
+Java 17+
 
 # Download
 
