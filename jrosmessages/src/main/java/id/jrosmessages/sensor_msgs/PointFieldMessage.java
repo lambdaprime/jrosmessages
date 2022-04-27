@@ -19,7 +19,6 @@ package id.jrosmessages.sensor_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -47,16 +46,16 @@ public class PointFieldMessage implements Message {
      * @see <a href= "http://docs.ros.org/hydro/api/pcl/html/point__types_8hpp.html">Point type
      *     names</a>
      */
-    @Streamed public String name;
+    public String name;
 
     /** Offset from start of point struct */
-    @Streamed public int offset;
+    public int offset;
 
     /** Data type */
-    @Streamed public byte datatype;
+    public byte datatype;
 
     /** How many elements in the field */
-    @Streamed public int count;
+    public int count;
 
     public PointFieldMessage() {}
 

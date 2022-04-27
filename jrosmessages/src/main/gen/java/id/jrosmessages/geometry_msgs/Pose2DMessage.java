@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -43,11 +42,11 @@ public class Pose2DMessage implements Message {
 
     static final String NAME = "geometry_msgs/Pose2D";
 
-    @Streamed public double x;
+    public double x;
 
-    @Streamed public double y;
+    public double y;
 
-    @Streamed public double theta;
+    public double theta;
 
     public Pose2DMessage withX(double x) {
         this.x = x;

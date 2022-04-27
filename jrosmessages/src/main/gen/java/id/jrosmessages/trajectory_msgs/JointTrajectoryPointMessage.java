@@ -20,7 +20,6 @@ package id.jrosmessages.trajectory_msgs;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
 import id.jrosmessages.primitives.Duration;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -37,15 +36,15 @@ public class JointTrajectoryPointMessage implements Message {
 
     static final String NAME = "trajectory_msgs/JointTrajectoryPoint";
 
-    @Streamed public double[] positions = new double[0];
+    public double[] positions = new double[0];
 
-    @Streamed public double[] velocities = new double[0];
+    public double[] velocities = new double[0];
 
-    @Streamed public double[] accelerations = new double[0];
+    public double[] accelerations = new double[0];
 
-    @Streamed public double[] effort = new double[0];
+    public double[] effort = new double[0];
 
-    @Streamed public Duration time_from_start = new Duration();
+    public Duration time_from_start = new Duration();
 
     public JointTrajectoryPointMessage withPositions(double... positions) {
         this.positions = positions;

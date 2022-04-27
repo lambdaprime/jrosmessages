@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -32,9 +31,9 @@ public class TransformMessage implements Message {
 
     static final String NAME = "geometry_msgs/Transform";
 
-    @Streamed public Vector3Message translation = new Vector3Message();
+    public Vector3Message translation = new Vector3Message();
 
-    @Streamed public QuaternionMessage rotation = new QuaternionMessage();
+    public QuaternionMessage rotation = new QuaternionMessage();
 
     public TransformMessage withTranslation(Vector3Message translation) {
         this.translation = translation;

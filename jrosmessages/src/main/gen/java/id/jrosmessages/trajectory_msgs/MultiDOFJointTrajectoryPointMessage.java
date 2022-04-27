@@ -22,7 +22,6 @@ import id.jrosmessages.MessageMetadata;
 import id.jrosmessages.geometry_msgs.TransformMessage;
 import id.jrosmessages.geometry_msgs.TwistMessage;
 import id.jrosmessages.primitives.Duration;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -36,15 +35,15 @@ public class MultiDOFJointTrajectoryPointMessage implements Message {
     static final String NAME = "trajectory_msgs/MultiDOFJointTrajectoryPoint";
 
     /** Each multi-dof joint can specify a transform (up to 6 DOF) */
-    @Streamed public TransformMessage[] transforms = new TransformMessage[0];
+    public TransformMessage[] transforms = new TransformMessage[0];
 
     /** There can be a velocity specified for the origin of the joint */
-    @Streamed public TwistMessage[] velocities = new TwistMessage[0];
+    public TwistMessage[] velocities = new TwistMessage[0];
 
     /** There can be an acceleration specified for the origin of the joint */
-    @Streamed public TwistMessage[] accelerations = new TwistMessage[0];
+    public TwistMessage[] accelerations = new TwistMessage[0];
 
-    @Streamed public Duration time_from_start = new Duration();
+    public Duration time_from_start = new Duration();
 
     public MultiDOFJointTrajectoryPointMessage withTransforms(TransformMessage... transforms) {
         this.transforms = transforms;

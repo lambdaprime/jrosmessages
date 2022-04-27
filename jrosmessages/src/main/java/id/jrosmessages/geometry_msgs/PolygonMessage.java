@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -30,7 +29,7 @@ public class PolygonMessage implements Message {
 
     static final String NAME = "geometry_msgs/Polygon";
 
-    @Streamed public Point32Message[] points = new Point32Message[0];
+    public Point32Message[] points = new Point32Message[0];
 
     public PolygonMessage withPoints(Point32Message[] points) {
         this.points = points;

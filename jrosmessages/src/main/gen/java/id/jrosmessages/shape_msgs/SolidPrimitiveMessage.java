@@ -19,7 +19,6 @@ package id.jrosmessages.shape_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -80,10 +79,10 @@ public class SolidPrimitiveMessage implements Message {
     }
 
     /** The type of the shape */
-    @Streamed public byte type;
+    public byte type;
 
     /** The dimensions of the shape */
-    @Streamed public double[] dimensions = new double[0];
+    public double[] dimensions = new double[0];
 
     public SolidPrimitiveMessage withShapeType(ShapeType type) {
         // ROS enumeration starts from 1

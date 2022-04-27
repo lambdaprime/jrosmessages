@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -29,9 +28,9 @@ public class PoseMessage implements Message {
 
     static final String NAME = "geometry_msgs/Pose";
 
-    @Streamed public PointMessage position = new PointMessage();
+    public PointMessage position = new PointMessage();
 
-    @Streamed public QuaternionMessage orientation = new QuaternionMessage();
+    public QuaternionMessage orientation = new QuaternionMessage();
 
     public PoseMessage withPosition(PointMessage position) {
         this.position = position;

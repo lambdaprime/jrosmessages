@@ -17,17 +17,16 @@
  */
 package id.jrosmessages.primitives;
 
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.time.Instant;
 
 public class Time {
 
     /** Seconds (stamp_secs) since epoch (unsigned) */
-    @Streamed public int sec;
+    public int sec;
 
     /** Nanoseconds since this.sec (unsigned) */
-    @Streamed public int nsec;
+    public int nsec;
 
     public Time() {}
 

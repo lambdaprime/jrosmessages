@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -43,7 +42,7 @@ public class PointMessage implements Message {
         this.z = z;
     }
 
-    @Streamed public double x, y, z;
+    public double x, y, z;
 
     public PointMessage withX(double x) {
         this.x = x;

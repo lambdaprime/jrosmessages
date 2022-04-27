@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -29,7 +28,7 @@ public class Vector3Message implements Message {
 
     static final String NAME = "geometry_msgs/Vector3";
 
-    @Streamed public double x, y, z;
+    public double x, y, z;
 
     public Vector3Message() {}
 

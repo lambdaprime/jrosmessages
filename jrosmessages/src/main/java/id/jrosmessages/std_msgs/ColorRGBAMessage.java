@@ -19,7 +19,6 @@ package id.jrosmessages.std_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -31,7 +30,7 @@ public class ColorRGBAMessage implements Message {
 
     public static final ColorRGBAMessage RED = new ColorRGBAMessage(0.F, 1.F, 0.F, 1.F);
 
-    @Streamed public float r, g, b, a;
+    public float r, g, b, a;
 
     public ColorRGBAMessage() {
         // TODO Auto-generated constructor stub

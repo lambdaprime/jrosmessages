@@ -17,7 +17,6 @@
  */
 package id.jrosmessages.primitives;
 
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 
 public class Duration {
@@ -25,10 +24,10 @@ public class Duration {
     public static final Duration UNLIMITED = new Duration();
 
     /** Seconds (stamp_secs) since epoch */
-    @Streamed public int sec;
+    public int sec;
 
     /** Nanoseconds since this.sec */
-    @Streamed public int nsec;
+    public int nsec;
 
     public Duration() {}
 

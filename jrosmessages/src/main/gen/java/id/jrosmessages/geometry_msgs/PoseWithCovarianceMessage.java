@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -33,14 +32,14 @@ public class PoseWithCovarianceMessage implements Message {
 
     static final String NAME = "geometry_msgs/PoseWithCovariance";
 
-    @Streamed public PoseMessage pose = new PoseMessage();
+    public PoseMessage pose = new PoseMessage();
 
     /**
      * Row-major representation of the 6x6 covariance matrix The orientation parameters use a
      * fixed-axis representation. In order, the parameters are: (x, y, z, rotation about X axis,
      * rotation about Y axis, rotation about Z axis)
      */
-    @Streamed public double[] covariance = new double[0];
+    public double[] covariance = new double[0];
 
     public PoseWithCovarianceMessage withPose(PoseMessage pose) {
         this.pose = pose;

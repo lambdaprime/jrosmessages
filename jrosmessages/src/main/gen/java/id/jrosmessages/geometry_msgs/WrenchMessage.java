@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -32,9 +31,9 @@ public class WrenchMessage implements Message {
 
     static final String NAME = "geometry_msgs/Wrench";
 
-    @Streamed public Vector3Message force = new Vector3Message();
+    public Vector3Message force = new Vector3Message();
 
-    @Streamed public Vector3Message torque = new Vector3Message();
+    public Vector3Message torque = new Vector3Message();
 
     public WrenchMessage withForce(Vector3Message force) {
         this.force = force;

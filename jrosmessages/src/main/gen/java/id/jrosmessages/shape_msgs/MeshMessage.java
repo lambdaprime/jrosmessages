@@ -20,7 +20,6 @@ package id.jrosmessages.shape_msgs;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
 import id.jrosmessages.geometry_msgs.PointMessage;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -32,10 +31,10 @@ public class MeshMessage implements Message {
     static final String NAME = "shape_msgs/Mesh";
 
     /** list of triangles; the index values refer to positions in vertices[] */
-    @Streamed public MeshTriangleMessage[] triangles = new MeshTriangleMessage[0];
+    public MeshTriangleMessage[] triangles = new MeshTriangleMessage[0];
 
     /** the actual vertices that make up the mesh */
-    @Streamed public PointMessage[] vertices = new PointMessage[0];
+    public PointMessage[] vertices = new PointMessage[0];
 
     public MeshMessage withTriangles(MeshTriangleMessage... triangles) {
         this.triangles = triangles;

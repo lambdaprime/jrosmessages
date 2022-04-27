@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -30,23 +29,23 @@ public class InertiaMessage implements Message {
     static final String NAME = "geometry_msgs/Inertia";
 
     /** Mass [kg] */
-    @Streamed public double m;
+    public double m;
 
     /** Center of mass [m] */
-    @Streamed public Vector3Message com = new Vector3Message();
+    public Vector3Message com = new Vector3Message();
 
     /** Inertia Tensor [kg-m^2] | ixx ixy ixz | I = | ixy iyy iyz | | ixz iyz izz | */
-    @Streamed public double ixx;
+    public double ixx;
 
-    @Streamed public double ixy;
+    public double ixy;
 
-    @Streamed public double ixz;
+    public double ixz;
 
-    @Streamed public double iyy;
+    public double iyy;
 
-    @Streamed public double iyz;
+    public double iyz;
 
-    @Streamed public double izz;
+    public double izz;
 
     public InertiaMessage withM(double m) {
         this.m = m;

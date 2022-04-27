@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -32,9 +31,9 @@ public class AccelMessage implements Message {
 
     static final String NAME = "geometry_msgs/Accel";
 
-    @Streamed public Vector3Message linear = new Vector3Message();
+    public Vector3Message linear = new Vector3Message();
 
-    @Streamed public Vector3Message angular = new Vector3Message();
+    public Vector3Message angular = new Vector3Message();
 
     public AccelMessage withLinear(Vector3Message linear) {
         this.linear = linear;

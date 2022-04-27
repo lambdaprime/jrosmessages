@@ -20,7 +20,6 @@ package id.jrosmessages.object_recognition_msgs;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
 import id.jrosmessages.std_msgs.StringMessage;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -38,7 +37,7 @@ public class ObjectTypeMessage implements Message {
      * Contains information about the type of a found object. Those two sets of parameters together
      * uniquely define an object The key of the found object: the unique identifier in the given db
      */
-    @Streamed public StringMessage key = new StringMessage();
+    public StringMessage key = new StringMessage();
 
     /**
      * The db parameters stored as a JSON/compressed YAML string. An object id does not make sense
@@ -50,7 +49,7 @@ public class ObjectTypeMessage implements Message {
      * 'SqlHousehold' host: 'wgs36' port: 5432 user: 'willow' password: 'willow' name:
      * 'household_objects' module: 'tabletop'
      */
-    @Streamed public StringMessage db = new StringMessage();
+    public StringMessage db = new StringMessage();
 
     public ObjectTypeMessage withKey(StringMessage key) {
         this.key = key;

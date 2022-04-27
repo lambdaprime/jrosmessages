@@ -19,7 +19,6 @@ package id.jrosmessages.std_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -27,7 +26,7 @@ import java.util.Objects;
 @MessageMetadata(type = "std_msgs/String", md5sum = "992ce8a1687cec8c8bd883ec73ca41d1")
 public class StringMessage implements Message {
 
-    @Streamed public String data = "";
+    public String data = "";
 
     // for kineticstreamer
     public StringMessage() {}

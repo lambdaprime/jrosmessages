@@ -19,7 +19,6 @@ package id.jrosmessages.shape_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -31,7 +30,7 @@ public class MeshTriangleMessage implements Message {
     static final String NAME = "shape_msgs/MeshTriangle";
 
     /** Definition of a triangle's vertices */
-    @Streamed public int[] vertex_indices = new int[0];
+    public int[] vertex_indices = new int[0];
 
     public MeshTriangleMessage withVertexIndices(int... vertex_indices) {
         this.vertex_indices = vertex_indices;

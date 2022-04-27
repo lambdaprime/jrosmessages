@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -29,7 +28,7 @@ public class QuaternionMessage implements Message {
 
     static final String NAME = "geometry_msgs/Quaternion";
 
-    @Streamed public double x, y, z, w;
+    public double x, y, z, w;
 
     public QuaternionMessage() {
         // TODO Auto-generated constructor stub

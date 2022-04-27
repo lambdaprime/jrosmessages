@@ -19,7 +19,6 @@ package id.jrosmessages.geometry_msgs;
 
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.kineticstreamer.annotations.Streamed;
 import id.xfunction.XJson;
 import java.util.Objects;
 
@@ -29,7 +28,7 @@ public class Point32Message implements Message {
 
     static final String NAME = "geometry_msgs/Point32";
 
-    @Streamed public float x, y, z;
+    public float x, y, z;
 
     public Point32Message() {}
 
