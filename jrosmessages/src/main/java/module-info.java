@@ -32,7 +32,6 @@
  */
 module jrosmessages {
     requires id.xfunction;
-    requires id.kineticstreamer;
     requires java.logging;
 
     exports id.jrosmessages;
