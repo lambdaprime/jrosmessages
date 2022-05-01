@@ -21,7 +21,7 @@ import id.xfunction.lang.XRE;
 import java.util.Optional;
 
 /** Allows to access message metadata based on their class object. */
-public class MetadataAccessor {
+public class MessageMetadataAccessor {
 
     public String getMd5(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
@@ -29,9 +29,15 @@ public class MetadataAccessor {
                 .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
     }
 
-    public String getType(Class<? extends Message> messageClass) {
+    public String getName(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
-                .map(MessageMetadata::type)
+                .map(MessageMetadata::name)
+                .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
+    }
+
+    public RosInterfaceType getInterfaceType(Class<? extends Message> messageClass) {
+        return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
+                .map(MessageMetadata::interfaceType)
                 .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
     }
 }

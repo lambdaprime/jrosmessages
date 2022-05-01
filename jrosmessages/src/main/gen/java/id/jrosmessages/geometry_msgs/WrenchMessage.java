@@ -26,7 +26,7 @@ import java.util.Objects;
  * Definition for geometry_msgs/Wrench This represents force in free space, separated into # its
  * linear and angular parts.
  */
-@MessageMetadata(type = WrenchMessage.NAME, md5sum = "2aae87faaa553ae28e07e684016d765c")
+@MessageMetadata(name = WrenchMessage.NAME, md5sum = "2aae87faaa553ae28e07e684016d765c")
 public class WrenchMessage implements Message {
 
     static final String NAME = "geometry_msgs/Wrench";

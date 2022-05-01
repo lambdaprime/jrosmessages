@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /** Definition for shape_msgs/MeshTriangle */
-@MessageMetadata(type = MeshTriangleMessage.NAME, md5sum = "9f61477ed8ee061cb6d71555c375ad8f")
+@MessageMetadata(name = MeshTriangleMessage.NAME, md5sum = "9f61477ed8ee061cb6d71555c375ad8f")
 public class MeshTriangleMessage implements Message {
 
     static final String NAME = "shape_msgs/MeshTriangle";

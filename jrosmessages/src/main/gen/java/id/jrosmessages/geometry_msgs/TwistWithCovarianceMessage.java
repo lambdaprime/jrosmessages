@@ -28,7 +28,7 @@ import java.util.Objects;
  * uncertainty.
  */
 @MessageMetadata(
-        type = TwistWithCovarianceMessage.NAME,
+        name = TwistWithCovarianceMessage.NAME,
         md5sum = "408e7ef4f4ec295f4663586922faacdd")
 public class TwistWithCovarianceMessage implements Message {
 

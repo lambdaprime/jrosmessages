@@ -23,7 +23,7 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Quaternion */
-@MessageMetadata(type = QuaternionMessage.NAME, md5sum = "a779879fadf0160734f906b8c19c7004")
+@MessageMetadata(name = QuaternionMessage.NAME, md5sum = "a779879fadf0160734f906b8c19c7004")
 public class QuaternionMessage implements Message {
 
     static final String NAME = "geometry_msgs/Quaternion";

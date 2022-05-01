@@ -27,7 +27,7 @@ import java.util.Objects;
  * Definition for geometry_msgs/PoseWithCovariance This represents a pose in free space with
  * uncertainty.
  */
-@MessageMetadata(type = PoseWithCovarianceMessage.NAME, md5sum = "4ec31161b30291389f54fb885685270a")
+@MessageMetadata(name = PoseWithCovarianceMessage.NAME, md5sum = "4ec31161b30291389f54fb885685270a")
 public class PoseWithCovarianceMessage implements Message {
 
     static final String NAME = "geometry_msgs/PoseWithCovariance";

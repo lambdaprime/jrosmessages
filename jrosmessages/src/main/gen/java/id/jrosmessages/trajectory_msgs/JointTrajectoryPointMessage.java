@@ -30,7 +30,7 @@ import java.util.Objects;
  * executed. # All specified values are in the same order as the joint names in JointTrajectory.msg
  */
 @MessageMetadata(
-        type = JointTrajectoryPointMessage.NAME,
+        name = JointTrajectoryPointMessage.NAME,
         md5sum = "0b7b3d8dcc88390331fe8287246f673f")
 public class JointTrajectoryPointMessage implements Message {
 

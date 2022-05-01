@@ -23,7 +23,7 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for std_msgs/String */
-@MessageMetadata(type = "std_msgs/String", md5sum = "992ce8a1687cec8c8bd883ec73ca41d1")
+@MessageMetadata(name = "std_msgs/String", md5sum = "992ce8a1687cec8c8bd883ec73ca41d1")
 public class StringMessage implements Message {
 
     public String data = "";

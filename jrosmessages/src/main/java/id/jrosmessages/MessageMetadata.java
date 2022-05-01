@@ -37,19 +37,23 @@ import java.lang.annotation.Target;
 public @interface MessageMetadata {
 
     /**
-     * ROS message type name.
+     * ROS message name.
      *
      * <p>For example: std_msgs/String
      */
-    String type();
+    String name();
 
     /**
-     * MD5 sum of the message. For example for message type "std_msgs/String" you can calculate it
-     * using rosmsg command:
+     * ROS1 MD5 sum of the message. For example for message type "std_msgs/String" you can calculate
+     * it using rosmsg command:
      *
      * <pre>
      * rosmsg md5 std_msgs/String
      * </pre>
+     *
+     * <p>It is required in ROS1 and ignored in ROS2 messages.
      */
-    String md5sum();
+    String md5sum() default "";
+
+    RosInterfaceType interfaceType() default RosInterfaceType.MESSAGE;
 }

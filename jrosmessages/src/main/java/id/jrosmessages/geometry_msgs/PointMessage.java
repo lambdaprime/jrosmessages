@@ -23,7 +23,7 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Point */
-@MessageMetadata(type = PointMessage.NAME, md5sum = "4a842b65f413084dc2b10fb484ea7f17")
+@MessageMetadata(name = PointMessage.NAME, md5sum = "4a842b65f413084dc2b10fb484ea7f17")
 public class PointMessage implements Message {
 
     static final String NAME = "geometry_msgs/Point";

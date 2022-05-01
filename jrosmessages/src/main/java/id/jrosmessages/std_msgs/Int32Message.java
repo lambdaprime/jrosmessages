@@ -23,7 +23,7 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for std_msgs/Int32 */
-@MessageMetadata(type = "std_msgs/Int32", md5sum = "da5909fbe378aeaf85e547e830cc1bb7")
+@MessageMetadata(name = "std_msgs/Int32", md5sum = "da5909fbe378aeaf85e547e830cc1bb7")
 public class Int32Message implements Message {
 
     public int data;

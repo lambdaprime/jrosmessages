@@ -26,7 +26,7 @@ import java.util.Objects;
  * Definition for geometry_msgs/Transform This represents the transform between two coordinate
  * frames in free space.
  */
-@MessageMetadata(type = TransformMessage.NAME, md5sum = "756be060b1c8cf0e64a10ba16909d887")
+@MessageMetadata(name = TransformMessage.NAME, md5sum = "756be060b1c8cf0e64a10ba16909d887")
 public class TransformMessage implements Message {
 
     static final String NAME = "geometry_msgs/Transform";

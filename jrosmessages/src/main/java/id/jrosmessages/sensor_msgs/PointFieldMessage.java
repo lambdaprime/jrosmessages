@@ -23,7 +23,7 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for sensor_msgs/PointField */
-@MessageMetadata(type = PointFieldMessage.NAME, md5sum = "268eacb2962780ceac86cbd17e328150")
+@MessageMetadata(name = PointFieldMessage.NAME, md5sum = "268eacb2962780ceac86cbd17e328150")
 public class PointFieldMessage implements Message {
 
     static final String NAME = "sensor_msgs/PointField";

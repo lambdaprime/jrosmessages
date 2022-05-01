@@ -27,7 +27,7 @@ import java.util.Objects;
  * Definition for shape_msgs/SolidPrimitive Define box, sphere, cylinder, cone All shapes are
  * defined to have their bounding boxes centered around 0,0,0.
  */
-@MessageMetadata(type = SolidPrimitiveMessage.NAME, md5sum = "9121085a5b5bb159b33cd1739087e356")
+@MessageMetadata(name = SolidPrimitiveMessage.NAME, md5sum = "9121085a5b5bb159b33cd1739087e356")
 public class SolidPrimitiveMessage implements Message {
 
     static final String NAME = "shape_msgs/SolidPrimitive";

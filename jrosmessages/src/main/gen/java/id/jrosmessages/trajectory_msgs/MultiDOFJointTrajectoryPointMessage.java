@@ -28,7 +28,7 @@ import java.util.Objects;
 
 /** Definition for trajectory_msgs/MultiDOFJointTrajectoryPoint */
 @MessageMetadata(
-        type = MultiDOFJointTrajectoryPointMessage.NAME,
+        name = MultiDOFJointTrajectoryPointMessage.NAME,
         md5sum = "5f4362816258cb631113d0b515ba1c14")
 public class MultiDOFJointTrajectoryPointMessage implements Message {
 

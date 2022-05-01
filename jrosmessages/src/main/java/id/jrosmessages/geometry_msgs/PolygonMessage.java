@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Polygon */
-@MessageMetadata(type = PolygonMessage.NAME, md5sum = "cd60a26494a087f577976f0329fa120e")
+@MessageMetadata(name = PolygonMessage.NAME, md5sum = "cd60a26494a087f577976f0329fa120e")
 public class PolygonMessage implements Message {
 
     static final String NAME = "geometry_msgs/Polygon";

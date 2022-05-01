@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /** Definition for shape_msgs/Mesh Definition of a mesh */
-@MessageMetadata(type = MeshMessage.NAME, md5sum = "de320644698bf336f8f37512079d2586")
+@MessageMetadata(name = MeshMessage.NAME, md5sum = "de320644698bf336f8f37512079d2586")
 public class MeshMessage implements Message {
 
     static final String NAME = "shape_msgs/Mesh";

@@ -28,7 +28,7 @@ import java.util.Objects;
  * uncertainty.
  */
 @MessageMetadata(
-        type = AccelWithCovarianceMessage.NAME,
+        name = AccelWithCovarianceMessage.NAME,
         md5sum = "c48b3713c98db26549cd6f7fa86d1e4d")
 public class AccelWithCovarianceMessage implements Message {
 
