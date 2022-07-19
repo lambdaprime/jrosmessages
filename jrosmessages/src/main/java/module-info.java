@@ -27,8 +27,8 @@
  *     messages</a>
  * @see <a href= "https://github.com/lambdaprime/jrosmessages/releases">Download</a>
  * @see <a href="https://github.com/lambdaprime/jrosmessages">GitHub repository</a>
- * @see <a href= "http://portal2.atwebpages.com/jrosclient/">jrosclient documentation</a> * @author
- *     lambdaprime intid@protonmail.com
+ * @see <a href= "http://portal2.atwebpages.com/jrosclient/">jrosclient documentation</a>
+ * @author lambdaprime intid@protonmail.com
  */
 module jrosmessages {
     requires id.xfunction;
