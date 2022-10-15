@@ -1,5 +1,9 @@
 **jrosmessages** - Java module with ROS (Robot Operating System) message definitions which are common across different ROS versions (ROS1, ROS2, ...).
 
+For ROS2 specific messages see [jros2messages](https://github.com/lambdaprime/jros2messages)
+
+For ROS1 specific messages see [jros1messages](https://github.com/lambdaprime/jros1messages)
+
 # Requirements
 
 Java 17+

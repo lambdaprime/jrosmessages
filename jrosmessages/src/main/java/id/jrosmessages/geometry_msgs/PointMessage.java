@@ -28,6 +28,8 @@ public class PointMessage implements Message {
 
     static final String NAME = "geometry_msgs/Point";
 
+    public double x, y, z;
+
     public PointMessage() {
         // required for kineticstreamer
     }
@@ -41,8 +43,6 @@ public class PointMessage implements Message {
         this.y = y;
         this.z = z;
     }
-
-    public double x, y, z;
 
     public PointMessage withX(double x) {
         this.x = x;
