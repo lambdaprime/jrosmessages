@@ -26,7 +26,7 @@ import id.jrosmessages.geometry_msgs.TransformMessage;
  *
  * <p>For performance reasons they avoid copying data and copy references instead.
  */
-public class MessagesTransformer {
+public class JRosMessagesTransformer {
 
     public PoseMessage asPoseMessage(TransformMessage message) {
         return new PoseMessage()
