@@ -19,6 +19,7 @@ package id.jrosmessages;
 
 import id.xfunction.lang.XRE;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /** Allows to access message metadata based on their class object. */
 public class MessageMetadataAccessor {
@@ -26,18 +27,20 @@ public class MessageMetadataAccessor {
     public String getMd5(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::md5sum)
-                .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
+                .filter(Predicate.not(String::isEmpty))
+                .orElseThrow(() -> new XRE("Metadata md5sum is missing for %s", messageClass));
     }
 
     public String getName(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::name)
-                .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
+                .orElseThrow(() -> new XRE("Metadata name is missing for %s", messageClass));
     }
 
     public RosInterfaceType getInterfaceType(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::interfaceType)
-                .orElseThrow(() -> new XRE("Metadata is missing for %s", messageClass));
+                .orElseThrow(
+                        () -> new XRE("Metadata interfaceType is missing for %s", messageClass));
     }
 }
