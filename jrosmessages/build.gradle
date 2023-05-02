@@ -23,7 +23,7 @@ eclipse.classpath.file {
 }
 
 dependencies {
-  api "io.github.lambdaprime:id.xfunction:22.0-SNAPSHOT"
+  api "io.github.lambdaprime:id.xfunction:22.0"
 }
 
 jar {
