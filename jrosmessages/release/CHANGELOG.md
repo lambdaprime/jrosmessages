@@ -1,3 +1,11 @@
+# Version 4
+
+- Adding Android build support
+- Adding ByteMultiArrayMessage
+- Define list of metrics
+
+[jrosmessages-v4.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v4.0.zip)
+
 # Version 3
 
 - Updating to Gradle 8.0.2
