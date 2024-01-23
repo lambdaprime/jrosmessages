@@ -42,4 +42,5 @@ module jrosmessages {
     exports id.jrosmessages.trajectory_msgs;
     exports id.jrosmessages.shape_msgs;
     exports id.jrosmessages.object_recognition_msgs;
+    exports id.jrosmessages.vision_msgs;
 }
