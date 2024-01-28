@@ -17,8 +17,10 @@
  */
 package id.jrosmessages.geometry_msgs;
 
+import id.jrosmessages.Array;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
+import id.xfunction.Preconditions;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -39,6 +41,7 @@ public class PoseWithCovarianceMessage implements Message {
      * fixed-axis representation. In order, the parameters are: (x, y, z, rotation about X axis,
      * rotation about Y axis, rotation about Z axis)
      */
+    @Array(size = 36)
     public double[] covariance = new double[0];
 
     public PoseWithCovarianceMessage withPose(PoseMessage pose) {
@@ -47,6 +50,7 @@ public class PoseWithCovarianceMessage implements Message {
     }
 
     public PoseWithCovarianceMessage withCovariance(double... covariance) {
+        Preconditions.equals(36, covariance.length);
         this.covariance = covariance;
         return this;
     }

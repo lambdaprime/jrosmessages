@@ -17,8 +17,10 @@
  */
 package id.jrosmessages.shape_msgs;
 
+import id.jrosmessages.Array;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
+import id.xfunction.Preconditions;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -33,9 +35,11 @@ public class PlaneMessage implements Message {
     static final String NAME = "shape_msgs/Plane";
 
     /** a := coef[0] b := coef[1] c := coef[2] d := coef[3] */
+    @Array(size = 4)
     public double[] coef = new double[0];
 
     public PlaneMessage withCoef(double... coef) {
+        Preconditions.equals(4, coef.length);
         this.coef = coef;
         return this;
     }

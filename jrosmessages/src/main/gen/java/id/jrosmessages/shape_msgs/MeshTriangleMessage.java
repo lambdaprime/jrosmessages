@@ -17,8 +17,10 @@
  */
 package id.jrosmessages.shape_msgs;
 
+import id.jrosmessages.Array;
 import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
+import id.xfunction.Preconditions;
 import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
@@ -30,9 +32,11 @@ public class MeshTriangleMessage implements Message {
     static final String NAME = "shape_msgs/MeshTriangle";
 
     /** Definition of a triangle's vertices */
+    @Array(size = 3)
     public int[] vertex_indices = new int[0];
 
     public MeshTriangleMessage withVertexIndices(int... vertex_indices) {
+        Preconditions.equals(3, vertex_indices.length);
         this.vertex_indices = vertex_indices;
         return this;
     }
