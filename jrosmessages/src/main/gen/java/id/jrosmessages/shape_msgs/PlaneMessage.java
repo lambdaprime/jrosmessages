@@ -29,7 +29,7 @@ import java.util.Objects;
  * Definition for shape_msgs/Plane Representation of a plane, using the plane equation ax + by + cz
  * + d = 0
  */
-@MessageMetadata(name = PlaneMessage.NAME, md5sum = "fc4d6d85ce294ff40862d9c7e9556367")
+@MessageMetadata(name = PlaneMessage.NAME, md5sum = "2c1b92ed8f31492f8e73f6a4a44ca796")
 public class PlaneMessage implements Message {
 
     static final String NAME = "shape_msgs/Plane";

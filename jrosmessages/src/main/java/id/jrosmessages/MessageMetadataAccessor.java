@@ -18,29 +18,50 @@
 package id.jrosmessages;
 
 import id.xfunction.lang.XRE;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/** Allows to access message metadata based on their class object. */
+/** Allows to access message metadata based on their class object. Must be thread-safe. */
 public class MessageMetadataAccessor {
 
     public String getMd5(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::md5sum)
                 .filter(Predicate.not(String::isEmpty))
-                .orElseThrow(() -> new XRE("Metadata md5sum is missing for %s", messageClass));
+                .orElseThrow(
+                        () ->
+                                new XRE(
+                                        "Metadata 'md5sum' property is missing for %s",
+                                        messageClass));
     }
 
     public String getName(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::name)
-                .orElseThrow(() -> new XRE("Metadata name is missing for %s", messageClass));
+                .orElseThrow(
+                        () -> new XRE("Metadata 'name' property is missing for %s", messageClass));
     }
 
     public RosInterfaceType getInterfaceType(Class<? extends Message> messageClass) {
         return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
                 .map(MessageMetadata::interfaceType)
                 .orElseThrow(
-                        () -> new XRE("Metadata interfaceType is missing for %s", messageClass));
+                        () ->
+                                new XRE(
+                                        "Metadata 'interfaceType' property is missing for %s",
+                                        messageClass));
+    }
+
+    public List<String> getFields(Class<? extends Message> messageClass) {
+        return Optional.ofNullable(messageClass.getAnnotation(MessageMetadata.class))
+                .map(MessageMetadata::fields)
+                .map(Arrays::asList)
+                .orElseThrow(
+                        () ->
+                                new XRE(
+                                        "Metadata 'fields' property is missing for %s",
+                                        messageClass));
     }
 }

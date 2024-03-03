@@ -23,7 +23,10 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Inertia */
-@MessageMetadata(name = InertiaMessage.NAME, md5sum = "f9eac69d7f8aaf44853616a958d7477f")
+@MessageMetadata(
+        name = InertiaMessage.NAME,
+        fields = {"m", "com", "ixx", "ixy", "ixz", "iyy", "iyz", "izz"},
+        md5sum = "1d26e4bb6c83ff141c5cf0d883c2b0fe")
 public class InertiaMessage implements Message {
 
     static final String NAME = "geometry_msgs/Inertia";

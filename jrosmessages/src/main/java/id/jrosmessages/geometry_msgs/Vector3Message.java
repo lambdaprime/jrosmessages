@@ -23,7 +23,10 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Vector3 */
-@MessageMetadata(name = Vector3Message.NAME, md5sum = "4a842b65f413084dc2b10fb484ea7f17")
+@MessageMetadata(
+        name = Vector3Message.NAME,
+        fields = {"x", "y", "z"},
+        md5sum = "4a842b65f413084dc2b10fb484ea7f17")
 public class Vector3Message implements Message {
 
     static final String NAME = "geometry_msgs/Vector3";

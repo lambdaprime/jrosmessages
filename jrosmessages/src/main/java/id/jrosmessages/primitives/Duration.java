@@ -17,8 +17,12 @@
  */
 package id.jrosmessages.primitives;
 
+import id.jrosmessages.MessageMetadata;
 import id.xfunction.XJson;
 
+@MessageMetadata(
+        name = "Duration",
+        fields = {"sec", "nsec"})
 public class Duration {
 
     public static final Duration UNLIMITED = new Duration();

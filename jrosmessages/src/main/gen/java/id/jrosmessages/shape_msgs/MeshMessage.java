@@ -24,8 +24,15 @@ import id.xfunction.XJson;
 import java.util.Arrays;
 import java.util.Objects;
 
-/** Definition for shape_msgs/Mesh Definition of a mesh */
-@MessageMetadata(name = MeshMessage.NAME, md5sum = "de320644698bf336f8f37512079d2586")
+/**
+ * Definition for shape_msgs/Mesh
+ *
+ * <p>Definition of a mesh
+ */
+@MessageMetadata(
+        name = MeshMessage.NAME,
+        fields = {"triangles", "vertices"},
+        md5sum = "1ffdae9486cd3316a121c578b47a85cc")
 public class MeshMessage implements Message {
 
     static final String NAME = "shape_msgs/Mesh";

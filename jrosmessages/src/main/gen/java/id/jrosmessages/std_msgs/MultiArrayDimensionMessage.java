@@ -28,7 +28,10 @@ import java.util.Objects;
  * message. # However if you would like to continue using this please use the equivalent in
  * example_msgs.
  */
-@MessageMetadata(name = MultiArrayDimensionMessage.NAME)
+@MessageMetadata(
+        name = MultiArrayDimensionMessage.NAME,
+        fields = {"label", "size", "stride"},
+        md5sum = "4cd0c83a8683deae40ecdac60e53bfa8")
 public class MultiArrayDimensionMessage implements Message {
 
     static final String NAME = "std_msgs/MultiArrayDimension";

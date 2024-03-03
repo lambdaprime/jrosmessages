@@ -37,7 +37,10 @@ import java.util.Objects;
  *
  * <p># This expresses a position and orientation on a 2D manifold.
  */
-@MessageMetadata(name = Pose2DMessage.NAME, md5sum = "c4f1c57a16aa55d3d2d8224a59d64313")
+@MessageMetadata(
+        name = Pose2DMessage.NAME,
+        fields = {"x", "y", "theta"},
+        md5sum = "938fa65709584ad8e77d238529be13b8")
 public class Pose2DMessage implements Message {
 
     static final String NAME = "geometry_msgs/Pose2D";

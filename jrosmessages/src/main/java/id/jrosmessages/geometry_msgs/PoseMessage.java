@@ -23,7 +23,10 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for geometry_msgs/Pose */
-@MessageMetadata(name = PoseMessage.NAME, md5sum = "e45d45a5a1ce597b249e23fb30fc871f")
+@MessageMetadata(
+        name = PoseMessage.NAME,
+        fields = {"position", "orientation"},
+        md5sum = "e45d45a5a1ce597b249e23fb30fc871f")
 public class PoseMessage implements Message {
 
     static final String NAME = "geometry_msgs/Pose";

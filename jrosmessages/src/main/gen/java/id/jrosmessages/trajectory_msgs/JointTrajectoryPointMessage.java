@@ -31,7 +31,8 @@ import java.util.Objects;
  */
 @MessageMetadata(
         name = JointTrajectoryPointMessage.NAME,
-        md5sum = "0b7b3d8dcc88390331fe8287246f673f")
+        fields = {"positions", "velocities", "accelerations", "effort", "time_from_start"},
+        md5sum = "f3cd1e1c4d320c79d6985c904ae5dcd3")
 public class JointTrajectoryPointMessage implements Message {
 
     static final String NAME = "trajectory_msgs/JointTrajectoryPoint";

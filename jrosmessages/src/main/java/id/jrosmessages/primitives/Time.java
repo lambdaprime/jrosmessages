@@ -17,9 +17,13 @@
  */
 package id.jrosmessages.primitives;
 
+import id.jrosmessages.MessageMetadata;
 import id.xfunction.XJson;
 import java.time.Instant;
 
+@MessageMetadata(
+        name = "Time",
+        fields = {"sec", "nsec"})
 public class Time {
 
     /** Seconds (stamp_secs) since epoch (unsigned) */

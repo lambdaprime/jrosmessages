@@ -26,7 +26,10 @@ import java.util.Objects;
  * Definition for geometry_msgs/Twist This expresses velocity in free space broken into its linear
  * and angular parts.
  */
-@MessageMetadata(name = TwistMessage.NAME, md5sum = "7b067cfe31b410bffd4e416af2c10eb0")
+@MessageMetadata(
+        name = TwistMessage.NAME,
+        fields = {"linear", "angular"},
+        md5sum = "9f195f881246fdfa2798d1d3eebca84a")
 public class TwistMessage implements Message {
 
     static final String NAME = "geometry_msgs/Twist";

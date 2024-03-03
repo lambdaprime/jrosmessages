@@ -44,6 +44,21 @@ public @interface MessageMetadata {
     String name();
 
     /**
+     * If ROS message consist from more than one field then they all should be listed inside this
+     * parameter in the same order as they declared inside the ROS message (and this is also the
+     * order in which they will be (de)serialized).
+     *
+     * <p>For example:
+     *
+     * <ul>
+     *   <li>in std_msgs/String there is only one field "data" so this parameter is no required
+     *   <li>in std_msgs/ColorRGBA there are four fields: "r", "g", "b", "a" so this parameter
+     *       should be initialized like fields = {"r", "g", "b", "a"}
+     * </ul>
+     */
+    String[] fields() default {};
+
+    /**
      * ROS1 MD5 sum of the message. For example for message type "std_msgs/String" you can calculate
      * it using rosmsg command:
      *
@@ -51,7 +66,7 @@ public @interface MessageMetadata {
      * rosmsg md5 std_msgs/String
      * </pre>
      *
-     * <p>It is required in ROS1 and ignored in ROS2 messages.
+     * <p>It is required in ROS1 and is optional (ignored) in ROS2 messages.
      */
     String md5sum() default "";
 

@@ -38,7 +38,10 @@ import java.util.Objects;
  * "channel" # dim[2].size = 3 # dim[2].stride = 3 # # multiarray(i,j,k) refers to the ith row, jth
  * column, and kth channel.
  */
-@MessageMetadata(name = MultiArrayLayoutMessage.NAME)
+@MessageMetadata(
+        name = MultiArrayLayoutMessage.NAME,
+        fields = {"dim", "data_offset"},
+        md5sum = "0fed2a11c13e11c5571b4e2a995a91a3")
 public class MultiArrayLayoutMessage implements Message {
 
     static final String NAME = "std_msgs/MultiArrayLayout";

@@ -23,7 +23,10 @@ import id.xfunction.XJson;
 import java.util.Objects;
 
 /** Definition for std_msgs/ColorRGBA */
-@MessageMetadata(name = ColorRGBAMessage.NAME, md5sum = "a29a96539573343b1310c73607334b00")
+@MessageMetadata(
+        name = ColorRGBAMessage.NAME,
+        fields = {"r", "g", "b", "a"},
+        md5sum = "a29a96539573343b1310c73607334b00")
 public class ColorRGBAMessage implements Message {
 
     static final String NAME = "std_msgs/ColorRGBA";

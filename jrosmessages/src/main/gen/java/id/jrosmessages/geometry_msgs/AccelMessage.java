@@ -26,7 +26,10 @@ import java.util.Objects;
  * Definition for geometry_msgs/Accel This expresses acceleration in free space broken into its
  * linear and angular parts.
  */
-@MessageMetadata(name = AccelMessage.NAME, md5sum = "e7128c50122d225a806b2f9ad84736b1")
+@MessageMetadata(
+        name = AccelMessage.NAME,
+        fields = {"linear", "angular"},
+        md5sum = "9f195f881246fdfa2798d1d3eebca84a")
 public class AccelMessage implements Message {
 
     static final String NAME = "geometry_msgs/Accel";

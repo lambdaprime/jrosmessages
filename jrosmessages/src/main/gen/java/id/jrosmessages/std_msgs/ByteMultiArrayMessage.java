@@ -31,7 +31,10 @@ import java.util.Objects;
  * <p># Please look at the MultiArrayLayout message definition for # documentation on all
  * multiarrays.
  */
-@MessageMetadata(name = ByteMultiArrayMessage.NAME)
+@MessageMetadata(
+        name = ByteMultiArrayMessage.NAME,
+        fields = {"layout", "data"},
+        md5sum = "70ea476cbcfd65ac2f68f3cda1e891fe")
 public class ByteMultiArrayMessage implements Message {
 
     static final String NAME = "std_msgs/ByteMultiArray";

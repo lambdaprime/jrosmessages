@@ -28,7 +28,10 @@ import java.util.Objects;
  * ################################################# OBJECT ID
  * #########################################################
  */
-@MessageMetadata(name = ObjectTypeMessage.NAME, md5sum = "151f84dab2823da86faa6732e8c5231b")
+@MessageMetadata(
+        name = ObjectTypeMessage.NAME,
+        fields = {"key", "db"},
+        md5sum = "ac757ec5be1998b0167e7efcda79e3cf")
 public class ObjectTypeMessage implements Message {
 
     static final String NAME = "object_recognition_msgs/ObjectType";
