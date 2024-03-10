@@ -23,7 +23,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/** Allows to access message metadata based on their class object. Must be thread-safe. */
+/**
+ * Allows to access {@link Message} metadata based on their {@link Class} object. Must be
+ * thread-safe.
+ */
 public class MessageMetadataAccessor {
 
     public String getMd5(Class<? extends Message> messageClass) {

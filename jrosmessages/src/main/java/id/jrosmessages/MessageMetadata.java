@@ -23,14 +23,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Every Message object suppose to contain message data only and not its metadata.
+ * Every {@link Message} object suppose to contain message data only and not its metadata.
  *
- * <p>That is why there is no metadata methods in base {@link Message} interface. Doing so we would
- * couple both and so to see the metadata for any message we would have to create a Message object
- * first.
+ * <p>That is why there is no metadata methods in base {@link Message} interface. Doing so would
+ * couple both and to see the metadata for any message we would have to create a {@link Message}
+ * object first.
  *
- * <p>Using this annotation on other hand allows to keep all Message metadata in its {@link Class}
- * object and access it right from there avoiding unnecessary Message object instantiation.
+ * <p>Using this annotation on other hand allows to keep all {@link Message} metadata in its {@link
+ * Class} object and access it right from {@link Class} avoiding unnecessary Message object
+ * instantiation.
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -44,15 +45,15 @@ public @interface MessageMetadata {
     String name();
 
     /**
-     * If ROS message consist from more than one field then they all should be listed inside this
-     * parameter in the same order as they declared inside the ROS message (and this is also the
+     * If ROS message consist from more than one field then all such fields should be listed inside
+     * this parameter in the same order as they defined inside the ROS message (and this is also the
      * order in which they will be (de)serialized).
      *
      * <p>For example:
      *
      * <ul>
-     *   <li>in std_msgs/String there is only one field "data" so this parameter is no required
-     *   <li>in std_msgs/ColorRGBA there are four fields: "r", "g", "b", "a" so this parameter
+     *   <li>in std_msgs/String there is only one field "data" so "fields" parameter is not required
+     *   <li>in std_msgs/ColorRGBA there are four fields: "r", "g", "b", "a" so "fields" parameter
      *       should be initialized like fields = {"r", "g", "b", "a"}
      * </ul>
      */
@@ -70,5 +71,6 @@ public @interface MessageMetadata {
      */
     String md5sum() default "";
 
+    /** Type of ROS message */
     RosInterfaceType interfaceType() default RosInterfaceType.MESSAGE;
 }

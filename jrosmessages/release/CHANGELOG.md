@@ -1,3 +1,9 @@
+# Version 6
+
+- Fixing ROS1 md5sum and adding new 'fields' parameter
+
+[jrosmessages-v6.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v6.0.zip)
+
 # Version 5
 
 - Issue lambdaprime/jros2client#9 fixing messages with fixed size arrays
