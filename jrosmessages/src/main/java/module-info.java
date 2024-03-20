@@ -25,16 +25,22 @@
  *
  * @see <a href= "http://portal2.atwebpages.com/jrosclient/Defining_messages.html">Defining new
  *     messages</a>
- * @see <a href= "https://github.com/lambdaprime/jrosmessages/blob/main/jrosmessages/release/CHANGELOG.md">Download</a>
+ * @see <a href=
+ *     "https://github.com/lambdaprime/jrosmessages/blob/main/jrosmessages/release/CHANGELOG.md">Download</a>
  * @see <a href="https://github.com/lambdaprime/jrosmessages">GitHub repository</a>
  * @see <a href= "http://portal2.atwebpages.com/jrosclient/">jrosclient documentation</a>
  * @author lambdaprime intid@protonmail.com
  */
 module jrosmessages {
     requires id.xfunction;
+    requires id.kineticstreamer;
     requires java.logging;
+    requires io.opentelemetry.api;
 
     exports id.jrosmessages;
+    exports id.jrosmessages.impl to
+            jros1messages,
+            jros2messages;
     exports id.jrosmessages.primitives;
     exports id.jrosmessages.std_msgs;
     exports id.jrosmessages.geometry_msgs;

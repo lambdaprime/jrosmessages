@@ -15,6 +15,8 @@ java {
 
 dependencies {
   api "io.github.lambdaprime:id.xfunction:25.0:android@aar"
+  api "io.github.lambdaprime:kineticstreamer:8.0"
+  api "io.opentelemetry:opentelemetry-api:1.34.1"
 }
 
 android {
@@ -32,7 +34,9 @@ android {
   }
 }
 
-// it is not possible to exclude module-info through srcDirs:
+// Android build complains on "requires java.logging;" inside module-info.java
+// for no obvious reason because JUL is part of Android API (see https://developer.android.com/reference/java/util/logging/package-summary)
+// It is not possible to exclude module-info through srcDirs:
 // https://discuss.gradle.org/t/how-to-exclude-module-info-java-in-gradle-7/42816
 // instead we copy sources except module-info to separate folder
 task copySources(type: Copy) {
