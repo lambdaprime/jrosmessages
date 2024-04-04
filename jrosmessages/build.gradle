@@ -14,6 +14,10 @@ plugins {
   id 'java-library'
 }
 
+boolean isReleaseBuild() {
+  return version != null && version.matches("\\d[.\\d]*");
+}
+
 apply plugin : 'eclipse'
 
 eclipse.classpath.file {
@@ -90,9 +94,8 @@ clean.dependsOn cleanRelease
 classes.dependsOn spotlessApply
 
 task updateVersion() {
-  // update version only when it is specified and non SNAPSHOT version is built
-  // 'unspecified' is the default value for the version in Gradle if it is not set
-  if (!version || version == "unspecified" || version.contains("SNAPSHOT")) return;
+  // update version only during release build
+  if (!isReleaseBuild()) return;
   println "Updating version to " + version
   new id.xfunction.text.Substitutor()
     .withRegexpSupport()

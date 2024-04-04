@@ -4,7 +4,7 @@ Building **jrosmessages** module locally and making changes to it (this is optio
 
 ## With Eclipse
 
-- Build eclipse projects:
+- Build Eclipse projects:
 
 ``` bash
 gradle eclipse

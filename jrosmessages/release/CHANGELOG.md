@@ -1,3 +1,10 @@
+# Version 7
+
+- Extracting common logic from jros1messages, jros2messages
+- Fixing Download link
+
+[jrosmessages-v7.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v7.0.zip)
+
 # Version 6
 
 - Fixing ROS1 md5sum and adding new 'fields' parameter

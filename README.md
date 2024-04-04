@@ -1,4 +1,4 @@
-**jrosmessages** - Java module with ROS (Robot Operating System) message definitions which are common across different ROS versions (ROS1, ROS2, ...).
+**jrosmessages** - Java module with ROS (Robot Operating System) message definitions which are common across different ROS versions (ROS2, ROS1, ...).
 
 For ROS2 specific messages see [jros2messages](https://github.com/lambdaprime/jros2messages)
 
@@ -18,7 +18,7 @@ Gradle:
 
 ```
 dependencies {
-  implementation 'io.github.lambdaprime:jrosmessages:6.0'
+  implementation 'io.github.lambdaprime:jrosmessages:7.0'
 }
 ```
 
