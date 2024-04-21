@@ -25,18 +25,22 @@ import id.kineticstreamer.KineticStreamWriter;
 import id.kineticstreamer.PublicStreamedFieldsProvider;
 import id.kineticstreamer.StreamedFieldsProvider;
 import id.xfunction.Preconditions;
+import id.xfunction.io.XOutputStream;
 import id.xfunction.logging.TracingToken;
 import id.xfunction.logging.XLogger;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.LongHistogram;
 import io.opentelemetry.api.metrics.Meter;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * Performs message (de)serialization (from)to stream of bytes.
@@ -94,6 +98,9 @@ public abstract class AbstractMessageSerializationUtils {
     public <M extends Message> M read(byte[] data, Class<M> clazz) {
         Preconditions.isTrue(
                 data.length != 0, "Could not read the message as there is no data to read");
+        if (logger.isLoggable(Level.FINER)) {
+            logger.log(Level.FINER, "Next packet body: {0}", toString(data));
+        }
         var startAt = Instant.now();
         logger.fine("Reading message: {0}", clazz.getName());
         try {
@@ -142,4 +149,14 @@ public abstract class AbstractMessageSerializationUtils {
     protected abstract KineticStreamReader newKineticStreamReader(ByteBuffer buf);
 
     protected abstract KineticStreamWriter newKineticStreamWriter(DataOutputStream dos);
+
+    private String toString(byte[] obj) {
+        var out = new XOutputStream();
+        try {
+            new ByteArrayInputStream(obj).transferTo(out);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "[" + out.asHexString() + "]";
+    }
 }

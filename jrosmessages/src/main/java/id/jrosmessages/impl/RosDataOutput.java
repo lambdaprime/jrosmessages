@@ -31,8 +31,8 @@ import java.nio.ByteBuffer;
 
 public class RosDataOutput implements OutputKineticStream {
     private XLogger logger = XLogger.getLogger(RosDataOutput.class);
-    private DataOutput out;
     private KineticStreamController controller;
+    protected DataOutput out;
 
     public RosDataOutput(
             @SuppressWarnings("exports") TracingToken tracingToken,
@@ -45,17 +45,6 @@ public class RosDataOutput implements OutputKineticStream {
 
     public void writeLen(int len) throws IOException {
         writeInt(len, EMPTY_ANNOTATIONS);
-    }
-
-    private void writeArraySize(int len, Annotation[] fieldAnnotations) throws IOException {
-        logger.entering("writeArraySize");
-        for (int i = 0; i < fieldAnnotations.length; i++) {
-            if (fieldAnnotations[i] instanceof id.jrosmessages.Array a) {
-                if (a.size() > 0) return;
-            }
-        }
-        writeLen(len);
-        logger.exiting("writeArraySize");
     }
 
     @Override
@@ -86,15 +75,6 @@ public class RosDataOutput implements OutputKineticStream {
     }
 
     @Override
-    public void writeArray(Object[] array, Annotation[] fieldAnnotations) throws Exception {
-        writeArraySize(array.length, fieldAnnotations);
-        var writer = new KineticStreamWriter(this).withController(controller);
-        for (var item : array) {
-            writer.write(item);
-        }
-    }
-
-    @Override
     public void close() throws Exception {
         // nothing to release
     }
@@ -102,6 +82,21 @@ public class RosDataOutput implements OutputKineticStream {
     @Override
     public void writeByte(Byte b, Annotation[] fieldAnnotations) throws IOException {
         out.writeByte(b);
+    }
+
+    @Override
+    public void writeChar(Character ch, Annotation[] fieldAnnotations) throws Exception {
+        throw new UnsupportedOperationException(JRosMessagesConstants.CHAR_ERROR);
+    }
+
+    @Override
+    public void writeLong(Long i, Annotation[] fieldAnnotations) throws Exception {
+        out.writeLong(Long.reverseBytes(i));
+    }
+
+    @Override
+    public void writeShort(Short arg0, Annotation[] fieldAnnotations) throws Exception {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -147,13 +142,12 @@ public class RosDataOutput implements OutputKineticStream {
     }
 
     @Override
-    public void writeLong(Long i, Annotation[] fieldAnnotations) throws Exception {
-        out.writeLong(Long.reverseBytes(i));
-    }
-
-    @Override
-    public void writeShort(Short arg0, Annotation[] fieldAnnotations) throws Exception {
-        throw new UnsupportedOperationException();
+    public void writeArray(Object[] array, Annotation[] fieldAnnotations) throws Exception {
+        writeArraySize(array.length, fieldAnnotations);
+        var writer = new KineticStreamWriter(this).withController(controller);
+        for (var item : array) {
+            writer.write(item);
+        }
     }
 
     @Override
@@ -167,11 +161,6 @@ public class RosDataOutput implements OutputKineticStream {
         for (var item : array) {
             writeString(item, EMPTY_ANNOTATIONS);
         }
-    }
-
-    @Override
-    public void writeChar(Character ch, Annotation[] fieldAnnotations) throws Exception {
-        throw new UnsupportedOperationException(JRosMessagesConstants.CHAR_ERROR);
     }
 
     @Override
@@ -190,5 +179,16 @@ public class RosDataOutput implements OutputKineticStream {
                     .put(array);
             out.write(buf);
         }
+    }
+
+    protected void writeArraySize(int len, Annotation[] fieldAnnotations) throws IOException {
+        logger.entering("writeArraySize");
+        for (int i = 0; i < fieldAnnotations.length; i++) {
+            if (fieldAnnotations[i] instanceof id.jrosmessages.Array a) {
+                if (a.size() > 0) return;
+            }
+        }
+        writeLen(len);
+        logger.exiting("writeArraySize");
     }
 }

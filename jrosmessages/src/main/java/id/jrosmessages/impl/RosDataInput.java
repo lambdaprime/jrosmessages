@@ -32,8 +32,8 @@ import java.nio.ByteBuffer;
 public class RosDataInput implements InputKineticStream {
 
     private XLogger logger;
-    private ByteBuffer in;
     private KineticStreamController controller;
+    protected ByteBuffer in;
 
     public RosDataInput(
             @SuppressWarnings("exports") TracingToken tracingToken,
@@ -153,16 +153,16 @@ public class RosDataInput implements InputKineticStream {
         return array;
     }
 
-    private int readArraySize(Annotation[] fieldAnnotations) throws IOException {
+    protected int readArraySize(Annotation[] fieldAnnotations) throws IOException {
         logger.entering("readArraySize");
-        var s = 0;
+        Integer s = null;
         for (int i = 0; i < fieldAnnotations.length; i++) {
             if (fieldAnnotations[i] instanceof id.jrosmessages.Array a) {
                 s = a.size();
                 break;
             }
         }
-        if (s == 0) s = readLen();
+        if (s == null) s = readLen();
         logger.exiting("readArraySize", s);
         return s;
     }
