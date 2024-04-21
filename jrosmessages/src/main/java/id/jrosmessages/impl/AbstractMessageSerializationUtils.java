@@ -25,6 +25,8 @@ import id.kineticstreamer.KineticStreamWriter;
 import id.kineticstreamer.PublicStreamedFieldsProvider;
 import id.kineticstreamer.StreamedFieldsProvider;
 import id.xfunction.Preconditions;
+import id.xfunction.logging.TracingToken;
+import id.xfunction.logging.XLogger;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.LongHistogram;
@@ -65,6 +67,7 @@ public abstract class AbstractMessageSerializationUtils {
             new PublicStreamedFieldsProvider(
                     clazz -> METADATA_ACCESSOR.getFields((Class<Message>) clazz));
 
+    private XLogger logger;
     private Attributes metricAttributes;
 
     /**
@@ -72,10 +75,13 @@ public abstract class AbstractMessageSerializationUtils {
      *     jros2messages, jros1messages. These attributes allow to identify metrics for
      *     jros2messages.
      */
-    public AbstractMessageSerializationUtils(Map<String, String> metricAttributes) {
+    public AbstractMessageSerializationUtils(
+            @SuppressWarnings("exports") TracingToken tracingToken,
+            Map<String, String> metricAttributes) {
         var attrBuilder = Attributes.builder();
         metricAttributes.forEach((k, v) -> attrBuilder.put(k, v));
         this.metricAttributes = attrBuilder.build();
+        logger = XLogger.getLogger(AbstractMessageSerializationUtils.class, tracingToken);
     }
 
     /**
@@ -89,6 +95,7 @@ public abstract class AbstractMessageSerializationUtils {
         Preconditions.isTrue(
                 data.length != 0, "Could not read the message as there is no data to read");
         var startAt = Instant.now();
+        logger.fine("Reading message: {0}", clazz.getName());
         try {
             var buf = ByteBuffer.wrap(data);
             var ks = newKineticStreamReader(buf);
@@ -96,6 +103,10 @@ public abstract class AbstractMessageSerializationUtils {
             return (M) obj;
         } catch (Exception e) {
             throw new RuntimeException("Problem reading " + clazz.getName(), e);
+        } catch (Error e) {
+            logger.severe(
+                    "Problem reading {0}: {1}", clazz.getName(), e.getClass().getSimpleName());
+            throw e;
         } finally {
             MESSAGE_DESERIALIZATION_TIME_METER.record(
                     Duration.between(startAt, Instant.now()).toMillis(), metricAttributes);
@@ -109,6 +120,8 @@ public abstract class AbstractMessageSerializationUtils {
      */
     public byte[] write(Message message) {
         var startAt = Instant.now();
+        var className = message.getClass().getName();
+        logger.fine("Writing message: {0}", className);
         try {
             var bos = new ByteArrayOutputStream();
             var dos = new DataOutputStream(bos);
@@ -116,7 +129,10 @@ public abstract class AbstractMessageSerializationUtils {
             ks.write(message);
             return bos.toByteArray();
         } catch (Exception e) {
-            throw new RuntimeException("Problem writing " + message.getClass().getName(), e);
+            throw new RuntimeException("Problem writing " + className, e);
+        } catch (Error e) {
+            logger.severe("Problem reading {0}: {1}", className, e.getClass().getName());
+            throw e;
         } finally {
             MESSAGE_SERIALIZATION_TIME_METER.record(
                     Duration.between(startAt, Instant.now()).toMillis(), metricAttributes);

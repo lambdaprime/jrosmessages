@@ -20,6 +20,7 @@ package id.jrosmessages.impl;
 import static id.kineticstreamer.KineticStreamConstants.EMPTY_ANNOTATIONS;
 
 import id.kineticstreamer.InputKineticStream;
+import id.kineticstreamer.KineticStreamController;
 import id.kineticstreamer.KineticStreamReader;
 import id.xfunction.logging.TracingToken;
 import id.xfunction.logging.XLogger;
@@ -32,9 +33,14 @@ public class RosDataInput implements InputKineticStream {
 
     private XLogger logger;
     private ByteBuffer in;
+    private KineticStreamController controller;
 
-    public RosDataInput(@SuppressWarnings("exports") TracingToken tracingToken, ByteBuffer buf) {
+    public RosDataInput(
+            @SuppressWarnings("exports") TracingToken tracingToken,
+            ByteBuffer buf,
+            KineticStreamController controller) {
         this.in = buf.order(JRosMessagesConstants.ROS_BYTE_ORDER);
+        this.controller = controller;
         logger = XLogger.getLogger(RosDataInput.class, tracingToken);
     }
 
@@ -90,7 +96,7 @@ public class RosDataInput implements InputKineticStream {
             throws Exception {
         logger.entering("readArray");
         var array = (Object[]) Array.newInstance(type, readArraySize(fieldAnnotations));
-        var reader = new KineticStreamReader(this);
+        var reader = new KineticStreamReader(this).withController(controller);
         for (int i = 0; i < array.length; i++) {
             array[i] = reader.read(type);
         }
