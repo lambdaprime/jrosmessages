@@ -39,6 +39,7 @@ module jrosmessages {
 
     exports id.jrosmessages;
     exports id.jrosmessages.impl to
+            jrosmessages.tests,
             jros1messages,
             jros2messages;
     exports id.jrosmessages.primitives;

@@ -1,0 +1,71 @@
+plugins {
+  id 'com.diffplug.spotless'
+  // only if you build Java library
+  id 'java-library'
+}
+
+eclipse.classpath.file {
+  // instruct eclipse plugin to put everything to module path
+  whenMerged {
+    entries.findAll { it.kind == 'lib' }.each { it.entryAttributes['module'] = 'true' }
+  }
+}
+
+dependencies {
+  implementation project(":${zzName}")
+
+  def junitVersion = "5.8.1"
+  implementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+  implementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+  runtimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+  runtimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
+}
+
+test {
+  useJUnitPlatform()
+
+  testLogging {
+    events "started", "failed"
+  }
+}
+
+// run spotless and format code before the build
+testClasses.dependsOn spotlessApply
+
+if (project.hasProperty('publish')) {
+
+  apply plugin: 'maven-publish'
+
+  publishing {
+    publications {
+      mavenJava(MavenPublication) {
+        artifactId = "${zzName}.tests"
+        groupId = "io.github.${zzNamespace}"
+        from components.java
+        pom {
+          name = "${zzName}.tests"
+          description = "${zzName} tests"
+          url = zzUrl
+
+          licenses {
+            license {
+              name = 'The Apache License, Version 2.0'
+              url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+            }
+          }
+
+          developers {
+            developer {
+              id = zzDevName
+              email = zzDevEmail
+            }
+          }
+
+          scm {
+            url = zzRepoUrl
+          }
+        }
+      }
+    }
+  }
+}
