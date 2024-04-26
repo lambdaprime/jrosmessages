@@ -23,22 +23,21 @@ android {
   lintOptions {
     abortOnError false
   }
-  sourceSets {
-    def srcMain = "../${zzName}/src/main/java"
-    def srcGen = "../${zzName}/src/main/gen"
-    assert file(srcMain).exists()
-    main {
-      java {
-        srcDirs += [
-          srcMain,
-          srcGen
-        ]
-      }
-    }
-  }
   defaultConfig {
     targetSdkVersion zzAndroidSdkVersion
     minSdkVersion zzAndroidSdkVersion
   }
 }
 
+// Android build complains on "requires java.logging;" inside module-info.java
+// for no obvious reason because JUL is part of Android API (see https://developer.android.com/reference/java/util/logging/package-summary)
+// It is not possible to exclude module-info through srcDirs:
+// https://discuss.gradle.org/t/how-to-exclude-module-info-java-in-gradle-7/42816
+// instead we copy sources except module-info to separate folder
+task copySources(type: Copy) {
+  from "../jrosmessages/src/main/java"
+  from "../jrosmessages/src/main/gen/java"
+  into "src/main/java"
+  exclude "**/module-info.java"
+}
+preBuild.dependsOn copySources

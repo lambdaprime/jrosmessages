@@ -1,3 +1,12 @@
+# Version 8
+
+- Moving common test logic to jrosmessages.tests
+- Log input stream of bytes when reading the messages
+- Updating gradle files
+- Issue lambdaprime/jros2client#11 When reading object arrays use controller set by the user
+
+[jrosmessages-v8.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v8.0.zip)
+
 # Version 7
 
 - Extracting common logic from jros1messages, jros2messages
