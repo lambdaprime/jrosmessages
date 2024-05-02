@@ -26,4 +26,5 @@ open module jrosmessages.tests {
 
     /** Allow users to overwrite (disable) tests (methods) in {@link MessageTests} */
     exports id.jrosmessages.tests;
+    exports id.jrosmessages.tests.msgs;
 }

@@ -86,7 +86,7 @@ public class RosDataInput implements InputKineticStream {
     @Override
     public boolean readBool(Annotation[] fieldAnnotations) throws IOException {
         logger.entering("readBool");
-        var value = readByte(EMPTY_ANNOTATIONS);
+        var value = readByte(fieldAnnotations);
         logger.exiting("readBool", value);
         return value == 1;
     }
@@ -171,7 +171,7 @@ public class RosDataInput implements InputKineticStream {
     public boolean[] readBooleanArray(boolean[] array, Annotation[] fieldAnnotations)
             throws Exception {
         logger.entering("readBooleanArray");
-        var b = readByteArray(null, EMPTY_ANNOTATIONS);
+        var b = readByteArray(null, fieldAnnotations);
         array = new boolean[b.length];
         for (int i = 0; i < array.length; i++) {
             array[i] = b[i] == 1;

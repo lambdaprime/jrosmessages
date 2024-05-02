@@ -133,12 +133,11 @@ public class RosDataOutput implements OutputKineticStream {
 
     @Override
     public void writeBooleanArray(boolean[] array, Annotation[] fieldAnnotations) throws Exception {
-        writeArraySize(array.length, fieldAnnotations);
         var buf = new byte[array.length];
         for (int i = 0; i < buf.length; i++) {
             buf[i] = array[i] ? (byte) 1 : (byte) 0;
         }
-        writeByteArray(buf, EMPTY_ANNOTATIONS);
+        writeByteArray(buf, fieldAnnotations);
     }
 
     @Override
@@ -169,8 +168,8 @@ public class RosDataOutput implements OutputKineticStream {
     }
 
     @Override
-    public void writeFloatArray(float[] array, Annotation[] arg1) throws Exception {
-        writeLen(array.length);
+    public void writeFloatArray(float[] array, Annotation[] fieldAnnotations) throws Exception {
+        writeArraySize(array.length, fieldAnnotations);
         if (array.length > 0) {
             var buf = new byte[array.length * Float.BYTES];
             ByteBuffer.wrap(buf)

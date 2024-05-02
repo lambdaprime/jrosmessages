@@ -99,7 +99,7 @@ public abstract class AbstractMessageSerializationUtils {
         Preconditions.isTrue(
                 data.length != 0, "Could not read the message as there is no data to read");
         if (logger.isLoggable(Level.FINER)) {
-            logger.log(Level.FINER, "Next packet body: {0}", toString(data));
+            logger.log(Level.FINER, "Reading message body: {0}", toString(data));
         }
         var startAt = Instant.now();
         logger.fine("Reading message: {0}", clazz.getName());
@@ -134,7 +134,11 @@ public abstract class AbstractMessageSerializationUtils {
             var dos = new DataOutputStream(bos);
             var ks = newKineticStreamWriter(dos);
             ks.write(message);
-            return bos.toByteArray();
+            var body = bos.toByteArray();
+            if (logger.isLoggable(Level.FINER)) {
+                logger.fine("Writing message body: {0}", toString(body));
+            }
+            return body;
         } catch (Exception e) {
             throw new RuntimeException("Problem writing " + className, e);
         } catch (Error e) {
