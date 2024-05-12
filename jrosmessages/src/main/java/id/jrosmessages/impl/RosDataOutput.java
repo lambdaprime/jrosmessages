@@ -30,7 +30,7 @@ import java.lang.annotation.Annotation;
 import java.nio.ByteBuffer;
 
 public class RosDataOutput implements OutputKineticStream {
-    private XLogger logger = XLogger.getLogger(RosDataOutput.class);
+    private XLogger logger;
     private KineticStreamController controller;
     protected DataOutput out;
 

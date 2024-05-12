@@ -98,21 +98,25 @@ public abstract class AbstractMessageSerializationUtils {
     public <M extends Message> M read(byte[] data, Class<M> clazz) {
         Preconditions.isTrue(
                 data.length != 0, "Could not read the message as there is no data to read");
-        if (logger.isLoggable(Level.FINER)) {
-            logger.log(Level.FINER, "Reading message body: {0}", toString(data));
-        }
         var startAt = Instant.now();
-        logger.fine("Reading message: {0}", clazz.getName());
+        var className = clazz.getName();
+        if (logger.isLoggable(Level.FINER)) {
+            logger.entering("read", new Object[] {className, toString(data)});
+        } else {
+            logger.fine("Reading message: {0}", className);
+        }
         try {
             var buf = ByteBuffer.wrap(data);
             var ks = newKineticStreamReader(buf);
             Object obj = ks.read(clazz);
+            if (logger.isLoggable(Level.FINER)) {
+                logger.exiting("read", (Object) obj);
+            }
             return (M) obj;
         } catch (Exception e) {
-            throw new RuntimeException("Problem reading " + clazz.getName(), e);
+            throw new RuntimeException("Problem reading " + className, e);
         } catch (Error e) {
-            logger.severe(
-                    "Problem reading {0}: {1}", clazz.getName(), e.getClass().getSimpleName());
+            logger.severe("Problem reading {0}: {1}", className, e.getClass().getSimpleName());
             throw e;
         } finally {
             MESSAGE_DESERIALIZATION_TIME_METER.record(
@@ -128,7 +132,11 @@ public abstract class AbstractMessageSerializationUtils {
     public byte[] write(Message message) {
         var startAt = Instant.now();
         var className = message.getClass().getName();
-        logger.fine("Writing message: {0}", className);
+        if (logger.isLoggable(Level.FINER)) {
+            logger.entering("write", new Object[] {className, message});
+        } else {
+            logger.fine("Writing message: {0}", className);
+        }
         try {
             var bos = new ByteArrayOutputStream();
             var dos = new DataOutputStream(bos);
@@ -136,7 +144,7 @@ public abstract class AbstractMessageSerializationUtils {
             ks.write(message);
             var body = bos.toByteArray();
             if (logger.isLoggable(Level.FINER)) {
-                logger.fine("Writing message body: {0}", toString(body));
+                logger.exiting("write", (Object) toString(body));
             }
             return body;
         } catch (Exception e) {
@@ -154,7 +162,7 @@ public abstract class AbstractMessageSerializationUtils {
 
     protected abstract KineticStreamWriter newKineticStreamWriter(DataOutputStream dos);
 
-    private String toString(byte[] obj) {
+    protected String toString(byte[] obj) {
         var out = new XOutputStream();
         try {
             new ByteArrayInputStream(obj).transferTo(out);
