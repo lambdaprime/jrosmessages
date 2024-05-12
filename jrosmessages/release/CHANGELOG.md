@@ -1,3 +1,11 @@
+# Version 9
+
+- Use entering/exiting to log entire messages content (for consistency)
+- Fixing (de)serialization for bool[] (see tests in ROS specific modules)
+- Updating gradle files
+
+[jrosmessages-v9.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v9.0.zip)
+
 # Version 8
 
 - Moving common test logic to jrosmessages.tests
