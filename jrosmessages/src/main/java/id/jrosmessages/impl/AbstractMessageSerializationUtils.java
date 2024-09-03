@@ -24,7 +24,6 @@ import id.kineticstreamer.KineticStreamReader;
 import id.kineticstreamer.KineticStreamWriter;
 import id.kineticstreamer.PublicStreamedFieldsProvider;
 import id.kineticstreamer.StreamedFieldsProvider;
-import id.xfunction.Preconditions;
 import id.xfunction.io.XOutputStream;
 import id.xfunction.logging.TracingToken;
 import id.xfunction.logging.XLogger;
@@ -47,6 +46,7 @@ import java.util.logging.Level;
  *
  * <p>Thread safe.
  *
+ * @see <a href="https://wiki.ros.org/msg">msg specification</a>
  * @author lambdaprime intid@protonmail.com
  */
 public abstract class AbstractMessageSerializationUtils {
@@ -96,12 +96,11 @@ public abstract class AbstractMessageSerializationUtils {
      * @param clazz message class
      */
     public <M extends Message> M read(byte[] data, Class<M> clazz) {
-        Preconditions.isTrue(
-                data.length != 0, "Could not read the message as there is no data to read");
         var startAt = Instant.now();
         var className = clazz.getName();
         if (logger.isLoggable(Level.FINER)) {
-            logger.entering("read", new Object[] {className, toString(data)});
+            logger.entering(
+                    "read", new Object[] {"className=" + className, "rawData=" + toString(data)});
         } else {
             logger.fine("Reading message: {0}", className);
         }
@@ -110,7 +109,7 @@ public abstract class AbstractMessageSerializationUtils {
             var ks = newKineticStreamReader(buf);
             Object obj = ks.read(clazz);
             if (logger.isLoggable(Level.FINER)) {
-                logger.exiting("read", (Object) obj);
+                logger.exiting("read", obj);
             }
             return (M) obj;
         } catch (Exception e) {
@@ -142,9 +141,9 @@ public abstract class AbstractMessageSerializationUtils {
             var dos = new DataOutputStream(bos);
             var ks = newKineticStreamWriter(dos);
             ks.write(message);
-            var body = bos.toByteArray();
+            var body = postProc(bos.toByteArray());
             if (logger.isLoggable(Level.FINER)) {
-                logger.exiting("write", (Object) toString(body));
+                logger.exiting("write", (Object) "raw data=" + toString(body));
             }
             return body;
         } catch (Exception e) {
@@ -170,5 +169,9 @@ public abstract class AbstractMessageSerializationUtils {
             throw new RuntimeException(e);
         }
         return "[" + out.asHexString() + "]";
+    }
+
+    protected byte[] postProc(byte[] rawMessage) {
+        return rawMessage;
     }
 }
