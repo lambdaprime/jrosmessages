@@ -15,51 +15,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package id.jrosmessages.primitives;
+package id.jrosmessages.std_msgs;
 
+import id.jrosmessages.Message;
 import id.jrosmessages.MessageMetadata;
-import id.xfunction.XJson;
 
-/**
- * @author lambdaprime intid@protonmail.com
- */
-@MessageMetadata(
-        name = "Duration",
-        fields = {"sec", "nsec"})
-public class Duration {
+/** Definition for std_msgs/Empty */
+@MessageMetadata(name = "std_msgs/Empty", md5sum = "d41d8cd98f00b204e9800998ecf8427e")
+public class EmptyMessage implements Message {
 
-    public static final Duration UNLIMITED = new Duration();
-
-    /** Seconds (stamp_secs) since epoch */
-    public int sec;
-
-    /** Nanoseconds since this.sec */
-    public int nsec;
-
-    public Duration() {}
-
-    public Duration(int sec) {
-        this(sec, 0);
-    }
-
-    public Duration(int sec, int nsec) {
-        this.sec = sec;
-        this.nsec = nsec;
-    }
+    // for kineticstreamer
+    public EmptyMessage() {}
 
     @Override
     public String toString() {
-        return XJson.asString("sec", sec, "nsec", nsec).toString();
+        return "{}";
     }
 
     @Override
     public int hashCode() {
-        return sec + nsec;
+        return 0;
     }
 
     @Override
     public boolean equals(Object obj) {
-        Duration other = (Duration) obj;
-        return sec == other.sec && nsec == other.nsec;
+        return obj instanceof EmptyMessage;
     }
 }

@@ -21,6 +21,7 @@ package id.jrosmessages;
  * ROS applications typically communicate through interfaces of one of three types: messages,
  * services and actions.
  *
+ * @author lambdaprime intid@protonmail.com
  * @see <a href="https://docs.ros.org/en/galactic/Concepts/About-ROS-Interfaces.html">About ROS
  *     Interfaces</a>
  */

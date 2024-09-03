@@ -15,13 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
- */
 /**
- * Java definitions for ROS primitive types.
+ * Java definitions for ROS primitive types (from builtin_interfaces package).
  *
+ * @author lambdaprime intid@protonmail.com
  * @see <a href="https://wiki.ros.org/msg">Message Description Specification</a>
  */
 package id.jrosmessages.primitives;

@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.nio.ByteBuffer;
 
+/**
+ * @see <a href="https://wiki.ros.org/msg">msg specification</a>
+ * @author lambdaprime intid@protonmail.com
+ */
 public class RosDataOutput implements OutputKineticStream {
     private XLogger logger;
     private KineticStreamController controller;

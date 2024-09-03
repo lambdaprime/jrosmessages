@@ -32,6 +32,8 @@ import java.lang.annotation.Target;
  * <p>Using this annotation on other hand allows to keep all {@link Message} metadata in its {@link
  * Class} object and access it right from {@link Class} avoiding unnecessary Message object
  * instantiation.
+ *
+ * @author lambdaprime intid@protonmail.com
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

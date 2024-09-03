@@ -21,6 +21,9 @@ import id.jrosmessages.MessageMetadata;
 import id.xfunction.XJson;
 import java.time.Instant;
 
+/**
+ * @author lambdaprime intid@protonmail.com
+ */
 @MessageMetadata(
         name = "Time",
         fields = {"sec", "nsec"})

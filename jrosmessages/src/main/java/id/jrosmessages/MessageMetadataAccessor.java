@@ -26,6 +26,8 @@ import java.util.function.Predicate;
 /**
  * Allows to access {@link Message} metadata based on their {@link Class} object. Must be
  * thread-safe.
+ *
+ * @author lambdaprime intid@protonmail.com
  */
 public class MessageMetadataAccessor {
 

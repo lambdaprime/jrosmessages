@@ -29,6 +29,10 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 
+/**
+ * @see <a href="https://wiki.ros.org/msg">msg specification</a>
+ * @author lambdaprime intid@protonmail.com
+ */
 public class RosDataInput implements InputKineticStream {
 
     private XLogger logger;

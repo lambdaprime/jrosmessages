@@ -17,5 +17,9 @@
  */
 package id.jrosmessages;
 
-/** Marker interface for all ROS messages */
+/**
+ * Marker interface for all ROS messages
+ *
+ * @author lambdaprime intid@protonmail.com
+ */
 public interface Message {}

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
- * Authors:
- * - lambdaprime <intid@protonmail.com>
+/**
+ * Main package with base interfaces and utility classes for working with ROS messages metadata.
+ *
+ * @author lambdaprime intid@protonmail.com
  */
-/** Main package with base interfaces and utility classes for working with ROS messages metadata. */
 package id.jrosmessages;
