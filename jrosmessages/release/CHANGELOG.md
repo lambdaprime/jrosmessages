@@ -1,3 +1,10 @@
+# Version 10
+
+- Adding std_msgs/Empty and minor javadoc updates
+- Issue pinorobotics/jros2services#1 Support for empty messages and allow AbstractMessageSerializationUtils subclasses to perform postprocessing
+
+[jrosmessages-v10.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v10.0.zip)
+
 # Version 9
 
 - Use entering/exiting to log entire messages content (for consistency)
