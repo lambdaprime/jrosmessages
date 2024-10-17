@@ -50,4 +50,5 @@ module jrosmessages {
     exports id.jrosmessages.shape_msgs;
     exports id.jrosmessages.object_recognition_msgs;
     exports id.jrosmessages.vision_msgs;
+    exports id.jrosmessages.diagnostic_msgs;
 }
