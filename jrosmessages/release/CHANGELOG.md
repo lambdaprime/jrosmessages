@@ -1,3 +1,10 @@
+# Version 11
+
+- Updating opentelemetry to v1.43.0
+- Adding diagnostic_msgs
+
+[jrosmessages-v11.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v11.0.zip)
+
 # Version 10
 
 - Adding std_msgs/Empty and minor javadoc updates

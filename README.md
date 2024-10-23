@@ -18,7 +18,7 @@ Gradle:
 
 ```
 dependencies {
-  implementation 'io.github.lambdaprime:jrosmessages:10.0'
+  implementation 'io.github.lambdaprime:jrosmessages:11.0'
 }
 ```
 
