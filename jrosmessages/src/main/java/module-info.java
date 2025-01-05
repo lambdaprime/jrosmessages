@@ -36,6 +36,7 @@ module jrosmessages {
     requires id.kineticstreamer;
     requires java.logging;
     requires io.opentelemetry.api;
+    requires transitive jroscommon;
 
     exports id.jrosmessages;
     exports id.jrosmessages.impl to

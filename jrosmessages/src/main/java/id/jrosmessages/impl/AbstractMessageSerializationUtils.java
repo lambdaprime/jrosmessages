@@ -19,7 +19,7 @@ package id.jrosmessages.impl;
 
 import id.jrosmessages.JRosMessageMetrics;
 import id.jrosmessages.Message;
-import id.jrosmessages.MessageMetadataAccessor;
+import id.jrosmessages.MessageDescriptor;
 import id.kineticstreamer.KineticStreamReader;
 import id.kineticstreamer.KineticStreamWriter;
 import id.kineticstreamer.PublicStreamedFieldsProvider;
@@ -65,11 +65,9 @@ public abstract class AbstractMessageSerializationUtils {
                     .ofLongs()
                     .build();
 
-    protected static final MessageMetadataAccessor METADATA_ACCESSOR =
-            new MessageMetadataAccessor();
     protected static final StreamedFieldsProvider FIELDS_PROVIDER =
             new PublicStreamedFieldsProvider(
-                    clazz -> METADATA_ACCESSOR.getFields((Class<Message>) clazz));
+                    clazz -> new MessageDescriptor((Class<Message>) clazz).readFields());
 
     private XLogger logger;
     private Attributes metricAttributes;
