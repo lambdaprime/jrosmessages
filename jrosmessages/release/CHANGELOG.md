@@ -1,3 +1,11 @@
+# Version 12
+
+- Add multi-array messages
+- Replace MessageMetadataAccessor with MessageDescriptor
+- Updating copyright
+
+[jrosmessages-v12.0.zip](https://github.com/lambdaprime/jrosmessages/raw/main/jrosmessages/release/jrosmessages-v12.0.zip)
+
 # Version 11
 
 - Updating opentelemetry to v1.43.0
